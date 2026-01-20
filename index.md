@@ -13,7 +13,7 @@ hero:
       text: Почати грати
       link: /wiki/getting-started
     - theme: alt
-      text: "📋 play.hytaleua.com.ua"
+      text: "📋 play.hytaleua.com.ua:15805"
       link: "#copy-ip"
 
 features:
@@ -51,7 +51,7 @@ import { onMounted } from 'vue'
 
 onMounted(() => {
   const ipButton = document.querySelector('a[href="#copy-ip"]')
-  const serverIp = "play.hytaleua.com.ua"
+  const serverIp = "play.hytaleua.com.ua:15805"
 
   if (ipButton) {
     ipButton.addEventListener('click', (e) => {
