@@ -1,0 +1,21 @@
+import{c as t,o as n,j as s,F as l,B as i,t as a,k as c}from"./chunks/framework.DdbKq0yJ.js";const d=JSON.parse(`[{"title":"Великий переїзд на 16 ГБ RAM! 🚀","url":"/news/2026-01-19-server-launch","html":"<div class=\\"article-container\\">\\n  <header class=\\"article-hero\\">\\n  <div class=\\"article-meta\\">\\n    <span class=\\"tag\\">Технічне</span>\\n    <span class=\\"date\\">📅 {{ new Date($frontmatter.date).toLocaleString('uk-UA') }}</span>\\n  </div>\\n  <h1 class=\\"article-title\\">\\n    <span>Великий переїзд на 16 ГБ RAM!</span> 🚀\\n  </h1>\\n</header>\\n  <div class=\\"article-banner\\">\\n    <img :src=\\"$frontmatter.image\\" :alt=\\"$frontmatter.title\\" />\\n  </div>\\n  <article class=\\"article-content\\">\\n<p>Це був довгий шлях, але ми це зробили! Наш сервер <strong>HytaleUA</strong> тепер працює на потужному залізо у Фінляндії з <strong>16 ГБ оперативної пам'яті</strong>.</p>\\n<h3 id=\\"що-це-дає-гравцям\\" tabindex=\\"-1\\">Що це дає гравцям: <a class=\\"header-anchor\\" href=\\"#що-це-дає-гравцям\\" aria-label=\\"Permalink to &quot;Що це дає гравцям:&quot;\\">&ZeroWidthSpace;</a></h3>\\n<ul>\\n<li><strong>Стабільність</strong>: жодних вильотів при великій кількості гравців.</li>\\n<li><strong>Швидкість</strong>: миттєве провантаження світу.</li>\\n<li><strong>Якість</strong>: тепер ми можемо запускати більше івентів одночасно.</li>\\n</ul>\\n  </article>\\n</div>\\n","date":"2026-01-19 14:30","image":"/news/server-upgrade.jpg","tag":"Новина"},{"title":"Великий переїзд на 16 ГБ RAM! 🚀","url":"/news/2026-01-20-server-launch","html":"<div class=\\"post-header\\">\\n  <span class=\\"post-meta\\">📅 19.01.2026 | Адмін HytaleUA</span>\\n  <h1>{{ $frontmatter.title }}</h1>\\n</div>\\n<img :src=\\"$frontmatter.image\\" class=\\"post-main-image\\" />\\n<p>Тут твій текст новини...</p>\\n","date":"2026-01-20 14:31","image":"/news/server-upgrade.jpg","tag":"Новина"},{"title":"Великий переїзд на 16 ГБ RAM! 🚀","url":"/news/2026-01-21-server-launch","html":"<div class=\\"post-header\\">\\n  <span class=\\"post-meta\\">📅 19.01.2026 | Адмін HytaleUA</span>\\n  <h1>{{ $frontmatter.title }}</h1>\\n</div>\\n<img :src=\\"$frontmatter.image\\" class=\\"post-main-image\\" />\\n<p>Тут твій текст новини...</p>\\n","date":"2026-01-21 14:32","image":"/news/server-upgrade.jpg","tag":"Новина"},{"title":"Великий переїзд на 16 ГБ RAM! 🚀","url":"/news/2026-01-22-server-launch","html":"<div class=\\"post-header\\">\\n  <span class=\\"post-meta\\">📅 19.01.2026 | Адмін HytaleUA</span>\\n  <h1>{{ $frontmatter.title }}</h1>\\n</div>\\n<img :src=\\"$frontmatter.image\\" class=\\"post-main-image\\" />\\n<p>Тут твій текст новини...</p>\\n","date":"2026-01-21 14:32","image":"/news/server-upgrade.jpg","tag":"Новина"}]`),o={class:"news-feed"},u=JSON.parse('{"title":"","description":"","frontmatter":{"layout":"page"},"headers":[],"relativePath":"news/index.md","filePath":"news/index.md"}'),p={name:"news/index.md"},f=Object.assign(p,{setup(m){return(g,h)=>(n(),t("div",null,[s("div",o,[(n(!0),t(l,null,i(c(d),e=>{var r;return n(),t("div",{key:e.url,class:"feed-item"},[s("pre",null,[s("code",null,`<header class="article-hero">
+  <div class="article-meta">
+    <span class="tag">`+a(e.tag)+`</span>
+    <span class="date">📅 `+a(e.date)+`</span>
+  </div>
+  <h1 class="article-title">
+    <span>`+a(e.title.replace(/[🚀🏆⚔️🛡️⚡🔄🎡📍]/g,""))+`</span> 
+    `+a((r=e.title.match(/[🚀🏆⚔️🛡️⚡🔄🎡📍]/g))==null?void 0:r.join(""))+`
+  </h1>
+</header>
+
+<div class="article-banner">
+  <img :src="post.image" :alt="post.title" />
+</div>
+
+<div class="article-content vp-doc" v-html="post.html"></div>
+
+<div class="feed-separator">
+  <div class="separator-dot"></div>
+</div>
+`,1)])])}),128))])]))}});export{u as __pageData,f as default};
