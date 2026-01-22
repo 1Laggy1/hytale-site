@@ -12,6 +12,7 @@ export default defineConfig({
     logo: '/logo.png',
     nav: [
       { text: 'Головна', link: '/' },
+      { text: '🔮 Магазин', link: 'https://shop.hytaleua.com.ua/' },
       { text: 'Новини', link: '/news/' },
       { text: 'Discord', link: 'https://discord.gg/JS75DCe9Dk' }
     ],
