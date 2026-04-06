@@ -13,6 +13,7 @@ export default defineConfig({
     nav: [
       { text: 'Головна', link: '/' },
       { text: '🔮 Підписка Amethyst', link: 'https://secure.wayforpay.com/sub/se2b1b37b0968' },
+      { text: '💖 Підтримати', link: '/support' },
       { text: 'Новини', link: '/news/' },
       { text: 'Discord', link: 'https://discord.gg/JS75DCe9Dk' }
     ],
