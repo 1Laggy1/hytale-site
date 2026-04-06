@@ -12,7 +12,7 @@ export default defineConfig({
     logo: '/logo.png',
     nav: [
       { text: 'Головна', link: '/' },
-      { text: '🔮 Магазин', link: 'https://secure.wayforpay.com/sub/se2b1b37b0968' },
+      { text: '🔮 Підписка Amethyst', link: 'https://secure.wayforpay.com/sub/se2b1b37b0968' },
       { text: 'Новини', link: '/news/' },
       { text: 'Discord', link: 'https://discord.gg/JS75DCe9Dk' }
     ],
