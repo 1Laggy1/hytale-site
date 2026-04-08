@@ -11,7 +11,6 @@ title: Підписки
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-
     <div class="sub-card" style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 40px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease;">
       <div style="font-size: 40px; margin-bottom: 20px;">🤍</div>
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">QUARTZ</h2>
@@ -23,7 +22,6 @@ title: Підписки
       </ul>
       <a href="ТВОЄ_ПОСИЛАННЯ_QUARTZ" target="_blank" class="sub-button" style="display: block; background: #6c757d; color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold;">Оплатити підписку</a>
     </div>
-
     <div class="sub-card active" style="background: var(--vp-c-bg-soft); border: 2px solid var(--vp-c-brand); border-radius: 24px; padding: 40px; text-align: center; transition: transform 0.3s ease; position: relative; transform: scale(1.05);">
       <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--vp-c-brand); color: white; padding: 5px 20px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase;">Популярно</div>
       <div style="font-size: 40px; margin-bottom: 20px;">💜</div>
@@ -39,7 +37,6 @@ title: Підписки
       </ul>
       <a href="ТВОЄ_ПОСИЛАННЯ_AMETHYST" target="_blank" class="sub-button" style="display: block; background: var(--vp-c-brand); color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold;">Оплатити підписку</a>
     </div>
-
     <div class="sub-card" style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 40px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease;">
       <div style="font-size: 40px; margin-bottom: 20px;">❤️</div>
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">RUBY</h2>
@@ -53,7 +50,6 @@ title: Підписки
       </ul>
       <a href="ТВОЄ_ПОСИЛАННЯ_RUBY" target="_blank" class="sub-button" style="display: block; background: #dc3545; color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold;">Оплатити підписку</a>
     </div>
-
   </div>
 </div>
 
