@@ -13,7 +13,7 @@ hero:
       text: Почати грати
       link: /wiki/getting-started
     - theme: alt
-      text: "📋 play.hytaleua.com.ua:15805"
+      text: "📋 play.hytaleua.com.ua"
       link: "#copy-ip"
 
 features:
@@ -79,3 +79,26 @@ onMounted(() => {
   <div class="blob yellow"></div>
 </div>
 
+<div style="max-width: 1152px; margin: 40px auto; padding: 20px; border-top: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); font-family: sans-serif; text-align: center;">
+
+  <div style="margin-bottom: 40px;">
+    <h3 style="margin-bottom: 15px; color: var(--vp-c-text-1);">Керування підпискою</h3>
+    <p style="margin-bottom: 15px;">Вже маєте підписку? Ви можете керувати своєю підпискою або скасувати її в особистому кабінеті банку:</p>
+    <a href="https://wayforpay.com/" target="_blank" style="display: inline-block; padding: 12px 24px; background-color: #4caf50; color: white; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px;">
+      ⚙️ Увійти у WayForPay
+    </a>
+    <p style="font-size: 12px; margin-top: 10px; opacity: 0.8;">
+      *Авторизуйтесь за номером телефону, який ви вказували при оплаті.
+    </p>
+  </div>
+
+  <div style="background-color: var(--vp-c-bg-soft); padding: 24px; border-radius: 12px; text-align: left; font-size: 14px; line-height: 1.6;">
+    <h4 style="margin-top: 0; margin-bottom: 10px; color: var(--vp-c-text-1);">Контактна інформація</h4>
+    <p style="margin-top: 0;"><strong>Email:</strong> andryushka05@gmail.com | <strong>Discord:</strong> <a href="https://discord.gg/NcRWvth5" target="_blank">Приєднатися до сервера</a></p>
+    <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--vp-c-text-1);">Договір публічної оферти</h4>
+    <p style="margin-top: 0;">Здійснюючи платіж на сайті hytaleua.com.ua, користувач оплачує надання цифрових послуг - доступ до віртуальних ігрових привілеїв (рангів) на сервері. Кошти спрямовуються на оплату хостингу, технічне обслуговування, а також є винагородою адміністрації за розробку та підтримку проекту. Ці привілеї є віртуальними послугами і не є фізичним товаром.</p>
+    <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--vp-c-text-1);">Політика повернення коштів (Refund Policy)</h4>
+    <p style="margin-top: 0; margin-bottom: 0;">Цифрові ігрові послуги надаються автоматично в момент оплати. Повернення коштів не здійснюється, окрім випадків технічного збою (якщо віртуальний товар не було видано на акаунт користувача протягом 24 годин після успішної оплати). У разі виникнення проблем, будь ласка, звертайтесь до підтримки через наш Discord-сервер.</p>
+  </div>
+
+</div>
