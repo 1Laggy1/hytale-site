@@ -29,10 +29,10 @@ title: Підписки
       <div style="font-size: 32px; font-weight: bold; color: var(--vp-c-brand); margin-bottom: 25px;">180 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ міс</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
         <li>✅ Все, що є в <b>Quartz</b></li>
-        <li>✅ Зміна префіксу</b></li>
+        <li>✅ Зміна префіксу</li>
         <li>✅ +5 точок <b>/home</b></li>
         <li>✅ Можливість повернутись до минулої точки <b>/back</b></li>
-	<li>✅ Можливість створювати warp <b>/setwarp</b></li>
+	    <li>✅ Можливість створювати warp <b>/setwarp</b></li>
         <li>✅ Зміна нікнейму</li>
       </ul>
       <a href="ТВОЄ_ПОСИЛАННЯ_AMETHYST" target="_blank" class="sub-button" style="display: block; background: var(--vp-c-brand); color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold;">Оплатити підписку</a>
@@ -44,7 +44,7 @@ title: Підписки
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
         <li>✅ Все, що є в <b>Amethyst</b></li>
         <li>✅ Зміна суфіксу</li>
-	<li>✅ Веселковий нікнейм і інші ефекти</li>
+	    <li>✅ Веселковий нікнейм і інші ефекти</li>
         <li>✅ +15 точок <b>/home</b></li>
         <li>✅ Унікальна роль з вибором кольору в Discord</li>
       </ul>
