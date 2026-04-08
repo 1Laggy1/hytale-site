@@ -77,7 +77,7 @@ onMounted(() => {
 <div style="max-width: 1152px; margin: 60px auto; padding: 0 24px;">
   <div style="background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(0,123,255,0.1) 100%); border: 1px solid var(--vp-c-brand); border-radius: 24px; padding: 40px; position: relative; overflow: hidden;">
     <div style="width: 100%; text-align: center; margin-bottom: 30px;">
-      <img src="/seasons_wide.png" alt="HytaleUA Seasons Banner" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.3);">
+      <img src="/seasons_wide.png" alt="HytaleUA Seasons Banner" style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.3);">
     </div>
     <div style="width: 100%; margin-bottom: 30px;">
       <span style="background: var(--vp-c-brand); color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase;">Ексклюзивно</span>
