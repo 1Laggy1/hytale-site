@@ -76,7 +76,6 @@ onMounted(() => {
 
 <div style="max-width: 1152px; margin: 60px auto; padding: 0 24px;">
   <div style="background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(0,123,255,0.1) 100%); border: 1px solid var(--vp-c-brand); border-radius: 24px; padding: 40px; position: relative; overflow: hidden;">
-    
     <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
       <div style="flex: 1; min-width: 300px;">
         <span style="background: var(--vp-c-brand); color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase;">Ексклюзивно</span>
@@ -87,33 +86,27 @@ onMounted(() => {
         <img src="/logo.png" alt="Seasons Preview" style="max-width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
       </div>
     </div>
-
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 40px;">
-      
       <div style="background: var(--vp-c-bg-soft); padding: 20px; border-radius: 16px;">
         <div style="font-size: 24px; margin-bottom: 10px;">✨</div>
         <h4 style="margin: 0 0 10px 0; color: var(--vp-c-text-1);">Нові враження</h4>
         <p style="margin: 0; font-size: 14px; color: var(--vp-c-text-2);">Кожного сезону — нова унікальна збірка модів. Ви хотіли різноманіття? Воно тут!</p>
       </div>
-
       <div style="background: var(--vp-c-bg-soft); padding: 20px; border-radius: 16px;">
         <div style="font-size: 24px; margin-bottom: 10px;">🔄</div>
         <h4 style="margin: 0 0 10px 0; color: var(--vp-c-text-1);">Свіжий старт</h4>
         <p style="margin: 0; font-size: 14px; color: var(--vp-c-text-2);">Періодичні вайпи світу гарантують рівні умови для всіх. Починайте пригоду разом з усіма!</p>
       </div>
-
       <div style="background: var(--vp-c-bg-soft); padding: 20px; border-radius: 16px;">
         <div style="font-size: 24px; margin-bottom: 10px;">🎁</div>
         <h4 style="margin: 0 0 10px 0; color: var(--vp-c-text-1);">Нагороди</h4>
         <p style="margin: 0; font-size: 14px; color: var(--vp-c-text-2);">За активну гру в сезоні ви отримуєте ексклюзивні бонуси на основному сервері HytaleUA.</p>
       </div>
-
       <div style="background: var(--vp-c-bg-soft); padding: 20px; border-radius: 16px;">
         <div style="font-size: 24px; margin-bottom: 10px;">💬</div>
         <h4 style="margin: 0 0 10px 0; color: var(--vp-c-text-1);">Спільний чат</h4>
         <p style="margin: 0; font-size: 14px; color: var(--vp-c-text-2);">Ми не ділимо спільноту! Спілкуйтеся з друзями на обох серверах одночасно.</p>
       </div>
-
     </div>
   </div>
 </div>
