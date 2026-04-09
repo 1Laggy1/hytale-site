@@ -15,7 +15,7 @@ export default defineConfig({
       { text: '🔮 Підписки', link: '/subscriptions' },
       { text: '⚙️ Керувати підпискою', link: 'https://wayforpay.com/uk' },
       { text: '💖 Підтримати', link: '/support' },
-      { text: 'Новини', link: '/news/' },
+      { text: '🛍️ Магазин', link: '/shop/' },
       { text: 'Discord', link: 'https://discord.gg/JS75DCe9Dk' }
     ],
     socialLinks: [
