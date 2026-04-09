@@ -165,7 +165,7 @@ const submitForm = async () => {
   
   try {
     // ВАЖЛИВО: Заміни адресу нижче на реальну адресу твого бота
-    const response = await fetch('https://play.hytaleua.com.ua:3000/api/create-subscription', {
+    const response = await fetch('https://shop.hytaleua.com.ua:3000/api/create-subscription', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
