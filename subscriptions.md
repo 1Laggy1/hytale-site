@@ -14,7 +14,7 @@ title: Підписки
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">QUARTZ</h2>
       <div style="font-size: 32px; font-weight: bold; color: #6c757d; margin-bottom: 25px;">50 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ міс</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
-        <li>✅ Зміна кольору нікнейму</li>
+        <li>✅ Зміна кольору нікнейму <b>/namecolor</b></li>
         <li>✅ +2 точки <b>/home</b></li>
         <li>✅ Пріоритетний вхід на сервер</li>
         <li>✅ Унікальна роль в Discord Quartz</li>
@@ -28,7 +28,7 @@ title: Підписки
       <div style="font-size: 32px; font-weight: bold; color: #bd00ed; margin-bottom: 25px;">180 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ міс</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
         <li>✅ Все, що є в <b>Quartz</b></li>
-        <li>✅ Зміна префіксу</li>
+        <li>✅ Зміна префіксу <b>/prefix /prefixcolor</b></li>
         <li>✅ +5 точок <b>/home</b></li>
         <li>✅ Можливість повернутись до <b>/back</b></li>
         <li>✅ Зміна назви і кольору приватів</li>
@@ -46,6 +46,7 @@ title: Підписки
         <li>✅ Все, що є в <b>Amethyst</b></li>
         <li>✅ Зміна суфіксу</li>
         <li>✅ Веселковий нікнейм і ефекти</li>
+        <li>✅ Повний доступ до кастомізації <b>/chateditor</b> </li>
         <li>✅ +15 точок <b>/home</b></li>
         <li>✅ Унікальна роль в Discord Ruby</li>
         <li>✅ Зміна кольору в Discord</li>
