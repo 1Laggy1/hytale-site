@@ -129,13 +129,51 @@ title: Підписки
     <input v-model="discordId" type="text" placeholder="Наприклад: 123456789012345678" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 25px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);">
     <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
-      <button @click="submitForm" :disabled="isLoading" style="flex: 1; padding: 12px; border-radius: 8px; background: var(--vp-c-brand); color: white; font-weight: bold; border: none; cursor: pointer;">
-        {{ isLoading ? 'Обробка...' : 'Перейти до оплати' }}
+      <button @click="submitForm" :disabled="isLoading" class="mono-pay-btn">
+        <span v-if="isLoading">Обробка...</span>
+        <span v-else style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+        Оплатити з mono
+        <span class="mono-pay-badge">Pay</span>
+        </span>
+      </button>
       </button>
     </div>
   </div>
 </div>
+<style>
+.mono-pay-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: #000000;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
 
+.mono-pay-btn:hover:not(:disabled) {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.mono-pay-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mono-pay-badge {
+  background: white;
+  color: black;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1;
+}
+</style>
 <script setup>
 import { ref } from 'vue'
 
