@@ -50,7 +50,7 @@ title: Підписки
         <li>✅ +15 точок <b>/home</b></li>
         <li>✅ Унікальна роль в Discord Ruby</li>
         <li>✅ Зміна кольору в Discord</li>
-        <li><li>✅ Чат RUBY (Direct адмін-чат)</li></li>
+        <li>✅ Чат RUBY (Direct адмін-чат)</li>
       </ul>
       <button @click="openModal('ruby')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #a50727; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Підписатись</button>
     </div>
