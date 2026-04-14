@@ -71,6 +71,17 @@ onMounted(() => {
       })
     })
   }
+  
+  const widgetContainer = document.getElementById('monicore-widget-container');
+  // Перевіряємо, чи є контейнер і чи ми ще не додали скрипт
+  if (widgetContainer && !document.getElementById('monicore-script')) {
+    const script = document.createElement('script');
+    script.id = 'monicore-script';
+    script.src = 'https://monicore.com.ua/static/widget.js';
+    script.setAttribute('data-server-id', '430');
+    script.async = true;
+    widgetContainer.appendChild(script);
+  }
 })
 </script>
 
@@ -107,6 +118,14 @@ onMounted(() => {
       </div>
     </div>
   </div>
+
+  <div style="flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 20px;">
+    <div style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+      <h3 style="margin-top: 0; margin-bottom: 20px; color: var(--vp-c-text-1); font-size: 24px; text-align: center;">Статус сервера</h3> 
+      <div id="monicore-widget-container" style="width: 100%; display: flex; justify-content: center;"></div>
+    </div>
+  </div>
+
 </div>
 
 <div class="bg-glow">
@@ -115,17 +134,6 @@ onMounted(() => {
 </div>
 
 <div style="max-width: 1152px; margin: 40px auto; padding: 20px; border-top: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); font-family: sans-serif; text-align: center;">
-
-  <div style="margin-bottom: 40px;">
-    <h3 style="margin-bottom: 15px; color: var(--vp-c-text-1);">Керування підпискою</h3>
-    <p style="margin-bottom: 15px;">Вже маєте підписку? Ви можете керувати своєю підпискою або скасувати її в особистому кабінеті банку:</p>
-    <a href="https://wayforpay.com/" target="_blank" style="display: inline-block; padding: 12px 24px; background-color: #4caf50; color: white; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px;">
-      ⚙️ Увійти у WayForPay
-    </a>
-    <p style="font-size: 12px; margin-top: 10px; opacity: 0.8;">
-      *Авторизуйтесь за номером телефону, який ви вказували при оплаті.
-    </p>
-  </div>
 
   <div style="background-color: var(--vp-c-bg-soft); padding: 24px; border-radius: 12px; text-align: left; font-size: 14px; line-height: 1.6;">
     <h4 style="margin-top: 0; margin-bottom: 10px; color: var(--vp-c-text-1);">Контактна інформація</h4>

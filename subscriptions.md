@@ -136,7 +136,6 @@ title: Підписки
         <span class="mono-pay-badge">Pay</span>
         </span>
       </button>
-      </button>
     </div>
   </div>
 </div>
