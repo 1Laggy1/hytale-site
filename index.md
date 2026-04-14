@@ -120,10 +120,7 @@ onMounted(() => {
   </div>
 
   <div style="flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 20px;">
-    <div style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-      <h3 style="margin-top: 0; margin-bottom: 20px; color: var(--vp-c-text-1); font-size: 24px; text-align: center;">Статус сервера</h3> 
       <div id="monicore-widget-container" style="width: 100%; display: flex; justify-content: center;"></div>
-    </div>
   </div>
 
 </div>
