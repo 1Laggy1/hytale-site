@@ -119,10 +119,6 @@ onMounted(() => {
     </div>
   </div>
 
-  <div style="flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 20px;">
-      <div id="monicore-widget-container" style="width: 100%; display: flex; justify-content: center;"></div>
-  </div>
-
 </div>
 
 <div class="bg-glow">
