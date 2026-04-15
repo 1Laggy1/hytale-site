@@ -61,13 +61,15 @@ title: Підписки
     <h3 style="margin-top: 0; margin-bottom: 20px; color: var(--vp-c-text-1);">Оформлення підписки</h3>
     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Ігровий нікнейм:</label>
     <input v-model="nickname" type="text" placeholder="Наприклад: laggyua" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
-    <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Discord ID:</label>
-    <input v-model="discordId" type="text" placeholder="Наприклад: 123456789012345678" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 25px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
-    
+        <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Discord ID:</label>
+    <input v-model="discordId" type="text" placeholder="Наприклад: 123456789012345678" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
+    <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 10px 15px; margin-bottom: 20px; border-radius: 4px; font-size: 13px; color: var(--vp-c-text-2);">
+      ⚠️ <b>Увага!</b> Вас буде перенаправлено на сторінку Банки. <b style="color: #dc3545;">НЕ ЗМІНЮЙТЕ суму та коментар!</b> Там уже вписано ваш унікальний номер замовлення. Якщо його стерти — бот не зможе видати підписку.
+    </div>
     <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
       <button @click="submitForm" :disabled="isLoading" class="mono-pay-btn">
-        <span v-if="isLoading">Обробка...</span>
+       <span v-if="isLoading">Обробка...</span>
         <span v-else style="display: flex; align-items: center; justify-content: center; gap: 6px;">
         Оплатити з mono
         <span class="mono-pay-badge">Pay</span>
