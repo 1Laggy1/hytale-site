@@ -51,7 +51,7 @@ title: Магазин
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
       <button @click="submitPayment" :disabled="isLoading" class="mono-pay-btn">
         <span v-if="isLoading">Обробка...</span>
-        <span v-else>Оплатити з mono</span>
+        <span v-else>Перейти до банки mono</span>
       </button>
     </div>
   </div>

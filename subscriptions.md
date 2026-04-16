@@ -55,22 +55,30 @@ title: Підписки
       <button @click="openModal('ruby')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #a50727; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Підписатись</button>
     </div>
   </div>
+  <div style="margin-top: 60px; padding: 30px; background: var(--vp-c-bg-soft); border-radius: 20px; border: 1px dashed var(--vp-c-divider); text-align: center;">
+    <h3 style="color: var(--vp-c-text-1); margin-bottom: 15px;">ℹ️ Важлива інформація</h3>
+    <p style="color: var(--vp-c-text-2); font-size: 16px; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+      Ми не використовуємо автоматичні підписки. Кожна оплата є <b>одноразовим внеском</b> на підтримку проекту. Гроші не будуть списуватися автоматично наступного місяця. 
+      <br><br>
+      Наш Discord-бот автоматично надішле вам нагадування за <b>3 дні</b> до закінчення терміну дії статусу з посиланням на добровільне продовження.
+    </p>
+  </div>
 </div>
 <div v-if="isModalOpen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(5px);">
   <div style="background: var(--vp-c-bg); padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; border: 1px solid var(--vp-c-divider); box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-    <h3 style="margin-top: 0; margin-bottom: 20px; color: var(--vp-c-text-1);">Оформлення підписки</h3>
+    <h3 style="margin-top: 0; margin-bottom: 20px; color: var(--vp-c-text-1);">Підтримка проекту</h3>
     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Ігровий нікнейм:</label>
     <input v-model="nickname" type="text" placeholder="Приклад: Andryushka" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Discord Нікнейм (username):</label>
-    <input v-model="discordId" type="text" placeholder="Приклад: laggyua" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" /> 
+    <input v-model="discordId" type="text" placeholder="Приклад: laggyua" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
     <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 8px 12px; margin-bottom: 20px; border-radius: 4px; font-size: 11px; color: var(--vp-c-text-2); line-height: 1.4;">
-      ⚠️ <b>Не змінюйте суму та коментар на сторінці Банки!</b> Там вписано номер замовлення — без нього бот не видасть підписку.
+      ⚠️ <b>Не змінюйте суму та коментар на сторінці Банки!</b> Там вписано номер замовлення — без нього бот не впізнає ваш внесок.
     </div>
     <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
       <button @click="submitForm" :disabled="isLoading" class="mono-pay-btn">
         <span v-if="isLoading">Обробка...</span>
-        <span v-else>Оплатити з mono</span>
+        <span v-else>Перейти до банки mono</span>
       </button>
     </div>
   </div>
