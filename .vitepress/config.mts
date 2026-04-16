@@ -12,9 +12,9 @@ export default defineConfig({
     logo: '/logo.png',
     nav: [
       { text: 'Головна', link: '/' },
-      { text: '🔮 Підписки', link: '/subscriptions' },
+      { text: '🔮 Статуси', link: '/subscriptions' },
       { text: '💖 Підтримати', link: '/support' },
-      { text: '🛍️ Магазин', link: '/shop/' },
+      { text: '🎁 Нагороди', link: '/shop/' },
       { text: 'Discord', link: 'https://discord.gg/JS75DCe9Dk' }
     ],
     socialLinks: [

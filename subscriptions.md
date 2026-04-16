@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Підписки
+title: Статуси
 ---
 
 <div style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; font-family: sans-serif;">
@@ -8,7 +8,7 @@ title: Підписки
     <h1 style="font-size: 48px; font-weight: 800; color: var(--vp-c-text-1); margin-bottom: 10px;">Оберіть свій статус</h1>
     <p style="font-size: 18px; color: var(--vp-c-text-2);">Підтримайте розвиток HytaleUA та отримайте унікальні можливості</p>
   </div>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">    
     <div class="sub-card sub-card-quartz" style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 40px; text-align: center; transition: all 0.4s ease-out; position: relative; overflow: visible;">
       <img src="/quartz.png" alt="Quartz Rank" style="width: 100px; height: 100px; margin: 0 auto 20px; display: block; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" />
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">QUARTZ</h2>
@@ -19,7 +19,7 @@ title: Підписки
         <li>✅ Пріоритетний вхід на сервер</li>
         <li>✅ Унікальна роль в Discord Quartz</li>
       </ul>
-      <button @click="openModal('quartz')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #6c757d; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Підписатись</button>
+      <button @click="openModal('quartz')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #6c757d; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати статус</button>
     </div>
     <div class="sub-card active" style="background: var(--vp-c-bg-soft); border: 2px solid #bd00ed; border-radius: 24px; padding: 40px; text-align: center; transition: all 0.4s ease-out; position: relative; transform: scale(1.05); overflow: visible;">
       <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #bd00ed; color: white; padding: 5px 20px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase;">Популярно</div>
@@ -36,7 +36,7 @@ title: Підписки
         <li>✅ Зміна нікнейму</li>
         <li>✅ Унікальна роль в Discord Amethyst</li>
       </ul>
-      <button @click="openModal('amethyst')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #bd00ed; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Підписатись</button>
+      <button @click="openModal('amethyst')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #bd00ed; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати статус</button>
     </div>
     <div class="sub-card sub-card-ruby" style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 40px; text-align: center; transition: all 0.4s ease-out; position: relative; overflow: visible;">
       <img src="/ruby.png" alt="Ruby Rank" style="width: 100px; height: 100px; margin: 0 auto 20px; display: block; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" />
@@ -52,13 +52,13 @@ title: Підписки
         <li>✅ Зміна кольору в Discord</li>
         <li>✅ Чат RUBY (Direct адмін-чат)</li>
       </ul>
-      <button @click="openModal('ruby')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #a50727; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Підписатись</button>
+      <button @click="openModal('ruby')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #a50727; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати статус</button>
     </div>
   </div>
   <div style="margin-top: 60px; padding: 30px; background: var(--vp-c-bg-soft); border-radius: 20px; border: 1px dashed var(--vp-c-divider); text-align: center;">
     <h3 style="color: var(--vp-c-text-1); margin-bottom: 15px;">ℹ️ Важлива інформація</h3>
     <p style="color: var(--vp-c-text-2); font-size: 16px; line-height: 1.6; max-width: 800px; margin: 0 auto;">
-      Ми не використовуємо автоматичні підписки. Кожна оплата є <b>одноразовим внеском</b> на підтримку проекту. Гроші не будуть списуватися автоматично наступного місяця. 
+      Ми не використовуємо автоматичні підписки. Кожна оплата є <b>одноразовим внеском</b> на підтримку проекту. Гроші не будуть списуватися автоматично наступного місяця.
       <br><br>
       Наш Discord-бот автоматично надішле вам нагадування за <b>3 дні</b> до закінчення терміну дії статусу з посиланням на добровільне продовження.
     </p>
@@ -72,13 +72,13 @@ title: Підписки
     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Discord Нікнейм (username):</label>
     <input v-model="discordId" type="text" placeholder="Приклад: laggyua" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
     <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 8px 12px; margin-bottom: 20px; border-radius: 4px; font-size: 11px; color: var(--vp-c-text-2); line-height: 1.4;">
-      ⚠️ <b>Не змінюйте суму та коментар на сторінці Банки!</b> Там вписано номер замовлення — без нього бот не впізнає ваш внесок.
+      ⚠️ <b>Не змінюйте суму та коментар на сторінці Банки!</b> Там вписано ваш унікальний код — без нього бот не впізнає ваш внесок.
     </div>
     <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
       <button @click="submitForm" :disabled="isLoading" class="mono-pay-btn">
         <span v-if="isLoading">Обробка...</span>
-        <span v-else>Перейти до банки mono</span>
+        <span v-else>Підтримати монобанком</span>
       </button>
     </div>
   </div>
@@ -97,6 +97,7 @@ title: Підписки
 
 <script setup>
 import { ref } from 'vue'
+
 const isModalOpen = ref(false)
 const selectedTier = ref('')
 const nickname = ref('')
@@ -117,7 +118,7 @@ const submitForm = async () => {
     })
     const data = await response.json()
     if (data.checkoutUrl) { window.location.href = data.checkoutUrl }
-    else { alert(data.error || "Помилка створення платежу.") }
+    else { alert(data.error || "Помилка створення запиту.") }
   } catch (error) { alert("Помилка з'єднання з сервером.") }
   isLoading.value = false
 }
