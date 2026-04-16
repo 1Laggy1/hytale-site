@@ -7,7 +7,7 @@ title: Магазин
   <div style="text-align: center; margin-bottom: 50px;">
     <h1 style="font-size: 48px; font-weight: 800; color: var(--vp-c-text-1); margin-bottom: 10px;">Ігровий Магазин</h1>
     <p style="font-size: 18px; color: var(--vp-c-text-2);">Купуйте корисні предмети та розширюйте свої можливості</p>
-  </div>  
+  </div>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
     <div class="shop-card" style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 40px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease;">
       <img src="/claim.png" alt="Чанки" style="width: 100px; height: 100px; margin: 0 auto 20px; display: block; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" />
@@ -38,113 +38,53 @@ title: Магазин
     <h3 style="margin-top: 0; margin-bottom: 5px; color: var(--vp-c-text-1);">Оформлення замовлення</h3>
     <div style="color: var(--vp-c-brand); font-weight: bold; margin-bottom: 20px; font-size: 18px;">Товар: {{ selectedItemName }}</div>
     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Ваш ігровий нікнейм:</label>
-    <input v-model="shopNickname" type="text" placeholder="Наприклад: laggyua" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
+    <input v-model="shopNickname" type="text" placeholder="Приклад: Andryushka" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Кількість:</label>
     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
       <input v-model="quantity" type="number" min="1" max="1000" style="width: 100px; box-sizing: border-box; padding: 12px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
-      <div style="font-size: 18px; font-weight: bold; color: var(--vp-c-text-1);">
-        До сплати: <span style="color: var(--vp-c-brand);">{{ quantity * selectedItemPrice }} грн</span>
-      </div>
+      <div style="font-size: 18px; font-weight: bold; color: var(--vp-c-text-1);">До сплати: <span style="color: var(--vp-c-brand);">{{ quantity * selectedItemPrice }} грн</span></div>
     </div>
-    <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 10px 15px; margin-bottom: 20px; border-radius: 4px; font-size: 13px; color: var(--vp-c-text-2);">
-      ⚠️ <b>Увага!</b> Вас буде перенаправлено на сторінку Банки. <b style="color: #dc3545;">НЕ ЗМІНЮЙТЕ суму та коментар!</b> Там уже вписано номер замовлення. Якщо його стерти — бот не видасть товар.
+    <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 8px 12px; margin-bottom: 20px; border-radius: 4px; font-size: 11px; color: var(--vp-c-text-2); line-height: 1.4;">
+      ⚠️ <b>Не змінюйте суму та коментар на сторінці Банки!</b> Там вписано номер замовлення — без нього бот не видасть товар.
     </div>
     <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
       <button @click="submitPayment" :disabled="isLoading" class="mono-pay-btn">
         <span v-if="isLoading">Обробка...</span>
-        <span v-else style="display: flex; align-items: center; justify-content: center; gap: 6px;">
-          Оплатити з mono
-          <span class="mono-pay-badge">Pay</span>
-        </span>
+        <span v-else>Оплатити з mono</span>
       </button>
     </div>
   </div>
 </div>
 
 <style>
-.shop-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--vp-c-brand) !important;
-}
-.shop-button:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-.mono-pay-btn {
-  width: 100%; padding: 12px; border-radius: 8px; background: #000000;
-  color: white; font-weight: bold; font-size: 16px; border: none; cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.mono-pay-btn:hover:not(:disabled) {
-  opacity: 0.85; transform: translateY(-2px);
-}
-.mono-pay-btn:disabled {
-  opacity: 0.6; cursor: not-allowed;
-}
-.mono-pay-badge {
-  background: white; color: black; padding: 2px 6px; border-radius: 4px;
-  font-size: 13px; font-weight: 900; line-height: 1;
-}
+.shop-card:hover { transform: translateY(-5px); border-color: var(--vp-c-brand) !important; }
+.shop-button:hover { filter: brightness(1.1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.mono-pay-btn { width: 100%; padding: 12px; border-radius: 8px; background: #000000; color: white; font-weight: bold; font-size: 15px; border: none; cursor: pointer; }
 </style>
 
 <script setup>
 import { ref } from 'vue'
+const isModalOpen = ref(false), selectedItemId = ref(''), selectedItemName = ref(''), selectedItemPrice = ref(0)
+const shopNickname = ref(''), quantity = ref(1), isLoading = ref(false)
 
-const isModalOpen = ref(false)
-const selectedItemId = ref('')
-const selectedItemName = ref('')
-const selectedItemPrice = ref(0)
-
-const shopNickname = ref('')
-const quantity = ref(1)
-const isLoading = ref(false)
-
-const openModal = (id, name, price) => {
-  selectedItemId.value = id
-  selectedItemName.value = name
-  selectedItemPrice.value = price
-  quantity.value = 1
-  isModalOpen.value = true
-}
-
-const closeModal = () => {
-  isModalOpen.value = false
-}
+const openModal = (id, name, price) => { selectedItemId.value = id; selectedItemName.value = name; selectedItemPrice.value = price; quantity.value = 1; isModalOpen.value = true; }
+const closeModal = () => { isModalOpen.value = false; }
 
 const submitPayment = async () => {
-  if (!shopNickname.value) {
-    alert("Будь ласка, введіть нікнейм!");
-    return;
-  }
-  if (quantity.value < 1) {
-    alert("Кількість має бути більшою за 0!");
-    return;
-  }
-
+  if (!shopNickname.value) { alert("Введіть нікнейм!"); return; }
+  const total = quantity.value * selectedItemPrice.value;
+  if (total < 10) { alert("Мінімальна сума замовлення — 10 грн. Будь ласка, збільште кількість товару."); return; }
   isLoading.value = true;
-
   try {
     const res = await fetch('https://shop.hytaleua.com.ua:3000/api/create-shop-payment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        itemId: selectedItemId.value,
-        quantity: quantity.value,
-        nickname: shopNickname.value
-      })
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ itemId: selectedItemId.value, quantity: quantity.value, nickname: shopNickname.value })
     });
-
     const data = await res.json();
-    if (data.checkoutUrl) {
-      window.location.href = data.checkoutUrl;
-    } else {
-      alert("Помилка створення рахунку. Спробуйте пізніше.");
-    }
-  } catch (error) {
-    alert("Помилка з'єднання з сервером.");
-  }
-
+    if (data.checkoutUrl) { window.location.href = data.checkoutUrl; }
+    else { alert("Помилка створення рахунку."); }
+  } catch (error) { alert("Помилка з'єднання з сервером."); }
   isLoading.value = false;
 }
 </script>
