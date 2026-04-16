@@ -13,7 +13,6 @@ export default defineConfig({
     nav: [
       { text: 'Головна', link: '/' },
       { text: '🔮 Підписки', link: '/subscriptions' },
-      { text: '⚙️ Керувати підпискою', link: '/cancel' },
       { text: '💖 Підтримати', link: '/support' },
       { text: '🛍️ Магазин', link: '/shop/' },
       { text: 'Discord', link: 'https://discord.gg/JS75DCe9Dk' }
