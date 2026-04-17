@@ -7,9 +7,9 @@ title: Підтримати проект
 
 Дякуємо, що граєте на нашому сервері!
 
-Оберіть найзручніший для вас спосіб підтримати розвиток **💛 HytaleUA 💙**:
-
 <br />
+
+### 🎯 Базове виживання та розвиток проекту
 
 <div class="goal-container">
   <div class="goal-stats">
@@ -23,6 +23,8 @@ title: Підтримати проект
     До кінця місяця залишилося зібрати: <span id="val-left">... грн</span>
   </div>
 </div>
+
+Оберіть найзручніший для вас спосіб підтримати розвиток **💛 HytaleUA 💙**:
 
 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; margin-bottom: 40px;">
   <a class="support-btn privat-btn" href="https://www.privat24.ua/send/im6ic" target="_blank">
