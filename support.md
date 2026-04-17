@@ -20,7 +20,7 @@ title: Підтримати проект
     <div id="val-bar" class="progress-fill" style="width: 0%;"></div>
   </div>
   <div class="goal-footer">
-    Залишилося зібрати: <span id="val-left">... грн</span>
+    До кінця місяця залишилося зібрати: <span id="val-left">... грн</span>
   </div>
 </div>
 
