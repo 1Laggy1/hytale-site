@@ -9,7 +9,7 @@ title: Підтримати проект
 
 Оберіть найзручніший для вас спосіб підтримати розвиток **💛 HytaleUA 💙**:
 
-<br>
+<br />
 
 <div class="goal-container">
   <div class="goal-stats">
@@ -38,11 +38,10 @@ title: Підтримати проект
     Банка Monobank
   </a>
 </div>
-
 > **Примітка:** Якщо ви хочете отримати унікальний ранг чи переваги, перейдіть до нашої сторінки [🔮 Статуси](/subscriptions). Ця сторінка призначена виключно для добровільних пожертв.
 
 <script>
-// Цей скрипт сам підтягує суму з твого бота при відкритті сторінки
+// Скрипт автоматично підтягує дані з бота
 if (typeof window !== 'undefined') {
   fetch('https://shop.hytaleua.com.ua:3000/api/funding')
     .then(response => response.json())
@@ -57,32 +56,121 @@ if (typeof window !== 'undefined') {
       document.getElementById('val-current').innerText = current + ' грн';
       document.getElementById('val-target').innerText = target + ' грн';
       document.getElementById('val-left').innerText = left + ' грн';
-      
-      // Анімуємо шкалу
+
+      // Плавна анімація заповнення шкали
       setTimeout(() => {
         document.getElementById('val-bar').style.width = percent + '%';
-      }, 300);
+      }, 400);
     })
     .catch(err => console.error('Не вдалося завантажити дані шкали:', err));
 }
 </script>
 
 <style>
-/* Загальні стилі для обох кнопок */
+/* ==========================================
+   СУПЕР-КРАСИВА ШКАЛА ПРОГРЕСУ (ЖОВТО-СИНЯ)
+   ========================================== */
+.goal-container {
+  background-color: var(--vp-c-bg-soft, #1e1e20);
+  border: 1px solid var(--vp-c-divider, #3c3f44);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.goal-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.goal-current {
+  color: var(--vp-c-text-2, #ebebf599);
+}
+
+.goal-current strong {
+  color: #ffd700; /* Яскравий український жовтий */
+  font-size: 22px;
+  margin-left: 6px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.goal-target {
+  color: var(--vp-c-text-2, #ebebf599);
+  font-size: 15px;
+}
+
+.goal-target strong {
+  color: var(--vp-c-text-1, #fff);
+  margin-left: 4px;
+}
+
+.progress-bg {
+  width: 100%;
+  height: 24px;
+  background-color: #111111;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+}
+
+.progress-fill {
+  height: 100%;
+  /* Розкішний жовто-синій градієнт */
+  background: linear-gradient(90deg, #0057b7, #ffd700);
+  border-radius: 20px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  /* Жовте світіння навколо шкали */
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Ефект живого переливання (shimmer) */
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.goal-footer {
+  margin-top: 16px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--vp-c-text-2, #888);
+}
+
+.goal-footer span {
+  color: #4da6ff; /* Приємний блакитний для залишку, щоб гарно читався на темному */
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+/* ==========================================
+   СТИЛІ КНОПОК
+   ========================================== */
 .support-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
   padding: 14px 28px;
-  border-radius: 50px; /* Сучасні заокруглені краї */
+  border-radius: 50px;
   font-size: 16px;
   font-weight: 700;
   text-decoration: none !important;
   transition: all 0.3s ease;
 }
 
-/* Стиль ПриватБанку */
 .privat-btn {
   background-color: #70b33b;
   color: white !important;
@@ -96,7 +184,6 @@ if (typeof window !== 'undefined') {
   border-color: #7fc744;
 }
 
-/* Стиль Monobank */
 .mono-btn {
   background-color: #1a1a1a;
   color: white !important;
