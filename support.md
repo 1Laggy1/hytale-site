@@ -23,6 +23,7 @@ title: Підтримати проект
     Залишилося зібрати: <span id="val-left">... грн</span>
   </div>
 </div>
+
 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; margin-bottom: 40px;">
   <a class="support-btn privat-btn" href="https://www.privat24.ua/send/im6ic" target="_blank">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,6 +39,7 @@ title: Підтримати проект
     Банка Monobank
   </a>
 </div>
+
 > **Примітка:** Якщо ви хочете отримати унікальний ранг чи переваги, перейдіть до нашої сторінки [🔮 Статуси](/subscriptions). Ця сторінка призначена виключно для добровільних пожертв.
 
 <script>
@@ -115,6 +117,7 @@ if (typeof window !== 'undefined') {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+  position: relative; /* Додано для правильної роботи shimmer */
 }
 
 .progress-fill {
@@ -123,7 +126,9 @@ if (typeof window !== 'undefined') {
   background: linear-gradient(90deg, #0057b7, #ffd700);
   border-radius: 20px;
   transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  position: absolute; /* Змінено на absolute */
+  top: 0;
+  left: 0;
   /* Жовте світіння навколо шкали */
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
@@ -132,9 +137,9 @@ if (typeof window !== 'undefined') {
 .progress-fill::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0; left: 0; bottom: 0; right: -230px; /* Збільшено відступ справа для плавного розчинення */
   background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
-  animation: shimmer 2.5s infinite;
+  animation: shimmer 3s infinite linear; /* Змінено easing для більшої плавності */
 }
 
 @keyframes shimmer {
@@ -143,7 +148,7 @@ if (typeof window !== 'undefined') {
 }
 
 .goal-footer {
-  margin-top: 16px;
+  margin-top: 35px; /* Збільшено відступ через абсолютне позиціонування шкали */
   text-align: right;
   font-size: 14px;
   color: var(--vp-c-text-2, #888);
