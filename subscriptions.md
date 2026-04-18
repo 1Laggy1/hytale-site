@@ -36,7 +36,7 @@ title: Статуси
         <li>✅ Можливість створювати <b>/setwarp</b></li>
         <li>✅ Зміна нікнейму</li>
         <li>✅ Збільшений ліміт ігрових порталів до 24</li>
-        <li>✅ Прибрані кулдауни на телепортації **/tp /home /rtp** і т.д</li>
+        <li>✅ Прибрані кулдауни на телепортації</li>
         <li>✅ Унікальна роль в Discord Amethyst</li>
       </ul>
       <button @click="openModal('amethyst')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #bd00ed; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати статус</button>
