@@ -16,6 +16,7 @@ title: Статуси
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
         <li>✅ Зміна кольору нікнейму <b>/namecolor</b></li>
         <li>✅ +2 точки <b>/home</b></li>
+        <li>✅ Збільшений ліміт ігрових порталів до 16</li>
         <li>✅ Пріоритетний вхід на сервер</li>
         <li>✅ Унікальна роль в Discord Quartz</li>
       </ul>
@@ -34,6 +35,7 @@ title: Статуси
         <li>✅ Зміна назви і кольору приватів</li>
         <li>✅ Можливість створювати <b>/setwarp</b></li>
         <li>✅ Зміна нікнейму</li>
+        <li>✅ Збільшений ліміт ігрових порталів до 24</li>
         <li>✅ Унікальна роль в Discord Amethyst</li>
       </ul>
       <button @click="openModal('amethyst')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #bd00ed; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати статус</button>
@@ -50,6 +52,7 @@ title: Статуси
         <li>✅ +15 точок <b>/home</b></li>
         <li>✅ Унікальна роль в Discord Ruby</li>
         <li>✅ Зміна кольору в Discord</li>
+        <li>✅ Нескінченний ліміт на ігрові портали</li>
         <li>✅ Чат RUBY (Direct адмін-чат)</li>
       </ul>
       <button @click="openModal('ruby')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #a50727; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати статус</button>
