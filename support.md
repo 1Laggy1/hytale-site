@@ -52,16 +52,18 @@ if (typeof window !== 'undefined') {
     .then(data => {
       const current = data.currentUAH;
       const target = data.targetUAH;
-      const left = target - current > 0 ? target - current : 0;
+      
+      // ВИПРАВЛЕНО: Додано parseFloat та .toFixed(2) для правильного округлення копійок
+      let left = target - current > 0 ? target - current : 0;
       left = parseFloat(left.toFixed(2));
+      
       let percent = Math.round((current / target) * 100);
       if (percent > 100) percent = 100;
 
-      // Оновлюємо текст
-      document.getElementById('val-current').innerText = current + ' грн';
+      // Оновлюємо текст (можна також округлити current, про всяк випадок)
+      document.getElementById('val-current').innerText = parseFloat(current.toFixed(2)) + ' грн';
       document.getElementById('val-target').innerText = target + ' грн';
       document.getElementById('val-left').innerText = left + ' грн';
-
       // Плавна анімація заповнення шкали
       setTimeout(() => {
         document.getElementById('val-bar').style.width = percent + '%';
