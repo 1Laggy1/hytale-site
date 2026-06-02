@@ -53,6 +53,7 @@ if (typeof window !== 'undefined') {
       const current = data.currentUAH;
       const target = data.targetUAH;
       const left = target - current > 0 ? target - current : 0;
+      left = parseFloat(left.toFixed(2));
       let percent = Math.round((current / target) * 100);
       if (percent > 100) percent = 100;
 
