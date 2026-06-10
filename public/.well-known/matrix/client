@@ -1,12 +1,4 @@
 {
-    "cc.etke.ketesa": {
-        "asManagedUsers": [],
-        "corsCredentials": "same-origin",
-        "externalAuthProvider": false,
-        "menu": [],
-        "restrictBaseUrl": "https://matrix.hytaleua.com.ua",
-        "wellKnownDiscovery": true
-    },
     "m.homeserver": {
         "base_url": "https://matrix.hytaleua.com.ua"
     },
@@ -21,5 +13,8 @@
             "type": "livekit",
             "livekit_service_url": "https://matrix.hytaleua.com.ua"
         }
-    ]
+    ],
+    "org.matrix.msc3401.call": {
+        "widget_url": "https://element-call.hytaleua.com.ua"
+    }
 }
