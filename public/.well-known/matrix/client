@@ -9,5 +9,17 @@
     },
     "m.homeserver": {
         "base_url": "https://matrix.hytaleua.com.ua"
-    }
+    },
+    "org.matrix.msc4143.rtc_foci": [
+        {
+            "type": "livekit",
+            "livekit_service_url": "https://matrix.hytaleua.com.ua"
+        }
+    ],
+    "org.matrix.msc3843.rtc_foci": [
+        {
+            "type": "livekit",
+            "livekit_service_url": "https://matrix.hytaleua.com.ua"
+        }
+    ]
 }
