@@ -24,6 +24,8 @@ title: Підтримати проект
   </div>
 </div>
 
+10% від накопиченої суми йде на підтримку Збройний Сил України
+
 Оберіть найзручніший для вас спосіб підтримати розвиток **💛 HytaleUA 💙**:
 
 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; margin-bottom: 40px;">
