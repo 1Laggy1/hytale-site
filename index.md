@@ -24,6 +24,9 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 const SERVER_IP = 'play.hytaleua.com.ua:15805'
 const MONICORE_SERVER_ID = 430
 const DISCORD_GUILD_ID = '1461345250189508801'
+// Постійне посилання-запрошення (https://discord.gg/...). Кнопка «Приєднатися» з'явиться під віджетом.
+// Якщо в налаштуваннях Discord (Widget → Invite channel) вибрано канал, посилання підтягнеться саме.
+const DISCORD_INVITE = ''
 // Скріншоти: поклади файли в папку public/screens/ і впиши імена, напр. ['spawn.jpg', 'castle.jpg']
 const screenshots = []
 
@@ -72,6 +75,17 @@ async function loadServer() {
 // ====== DISCORD (офіційний віджет, тема підлаштовується під сайт) ======
 const discordTheme = ref('dark')
 const discordSrc = computed(() => `https://discord.com/widget?id=${DISCORD_GUILD_ID}&theme=${discordTheme.value}`)
+const discordAutoInvite = ref('')
+const discordLink = computed(() => DISCORD_INVITE || discordAutoInvite.value)
+
+async function loadDiscordInvite() {
+  try {
+    const r = await fetch(`https://discord.com/api/guilds/${DISCORD_GUILD_ID}/widget.json`)
+    if (!r.ok) return
+    const d = await r.json()
+    discordAutoInvite.value = d.instant_invite || ''
+  } catch (e) { /* без посилання кнопка просто не покажеться */ }
+}
 
 // ====== КОПІЮВАННЯ IP ======
 const copied = ref(false)
@@ -142,6 +156,7 @@ onMounted(() => {
   observer.observe(html, { attributes: true, attributeFilter: ['class'] })
 
   loadServer()
+  loadDiscordInvite()
   loadFund()
   timer = setInterval(loadServer, 60000)
 })
@@ -176,6 +191,7 @@ onUnmounted(() => {
   </div>
   <div class="hua-card hua-discord">
     <iframe :src="discordSrc" title="Discord HytaleUA" width="100%" height="480" allowtransparency="true" frameborder="0" loading="lazy" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+    <a v-if="discordLink" class="hua-discord-join" :href="discordLink" target="_blank" rel="noopener">💬 Приєднатися до Discord</a>
   </div>
 </section>
 
@@ -290,10 +306,13 @@ onUnmounted(() => {
 
 .hua-discord { overflow: hidden; padding: 0; }
 .hua-discord iframe { display: block; width: 100%; height: 480px; border: 0; }
+.hua-discord-join { display: block; padding: 14px; text-align: center; font-size: 15px; font-weight: 700; color: #fff !important; background: #5865f2; text-decoration: none !important; transition: background .25s ease; }
+.hua-discord-join:hover { background: #4752c4; }
 
 @media (min-width: 1840px) {
   .hua-side { display: block; padding: 0; max-width: none; margin: 0; }
-  .hua-server, .hua-discord { position: fixed; top: 96px; width: 300px; z-index: 10; }
+  /* По центру по вертикалі (враховуючи шапку сайту 64px) */
+  .hua-server, .hua-discord { position: fixed; top: calc(50% + 32px); transform: translateY(-50%); width: 300px; z-index: 10; }
   .hua-server { left: calc(50% - 900px); }
   .hua-discord { left: calc(50% + 600px); }
 }
