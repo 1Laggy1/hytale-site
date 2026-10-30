@@ -26,7 +26,7 @@ const MONICORE_SERVER_ID = 430
 const DISCORD_GUILD_ID = '1461345250189508801'
 // Постійне посилання-запрошення (https://discord.gg/...). Кнопка «Приєднатися» з'явиться під віджетом.
 // Якщо в налаштуваннях Discord (Widget → Invite channel) вибрано канал, посилання підтягнеться саме.
-const DISCORD_INVITE = ''
+const DISCORD_INVITE = 'https://discord.gg/XZrn7xQC8Y'
 // Скріншоти: поклади файли в папку public/screens/ і впиши імена, напр. ['spawn.jpg', 'castle.jpg']
 const screenshots = []
 
