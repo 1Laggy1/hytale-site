@@ -205,7 +205,7 @@ onUnmounted(() => {
 
 <section class="hua-section" v-if="screenshots.length">
   <h2 class="hua-title">Наш <span>світ</span></h2>
-  <p class="hua-lead">Трохи кадрів з Orbis.</p>
+  <p class="hua-lead">Трохи кадрів з HytaleUA.</p>
   <div class="hua-slider" role="region" aria-roledescription="carousel" aria-label="Скріншоти сервера HytaleUA" tabindex="0" @mouseenter="paused = true" @mouseleave="paused = false" @touchstart.passive="onTouchStart" @touchend.passive="onTouchEnd" @keydown.left.prevent="prev" @keydown.right.prevent="next">
     <div class="hua-slide" v-for="(s, i) in screenshots" :key="s" :class="{ active: i === slide }" :aria-hidden="i !== slide">
       <img :src="shouldLoad(i) ? '/screens/' + s : undefined" :alt="'Скріншот сервера HytaleUA ' + (i + 1)" draggable="false" />
