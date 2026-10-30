@@ -42,36 +42,6 @@ const features = [
   { icon: '⚔', title: 'Стабільність', details: 'Стабільність понад усе! Регулярні бекапи світу, постійна робота над швидкодією і безпекою сервера! Будьте впевнені, ваш прогрес у надійних руках.' }
 ]
 
-// ====== СТАТУС СЕРВЕРА (дані з Monicore) ======
-const server = ref(null)
-const serverError = ref(false)
-
-const hasPlayerData = computed(() => !!server.value && server.value.max > 0)
-const statusClass = computed(() => {
-  if (!server.value) return 'unknown'
-  return server.value.isOnline ? 'on' : 'off'
-})
-const statusText = computed(() => {
-  if (!server.value) return serverError.value ? 'Немає даних' : 'Завантаження…'
-  return server.value.isOnline ? 'Онлайн' : 'Офлайн'
-})
-const playersPercent = computed(() => {
-  if (!hasPlayerData.value) return 0
-  return Math.min(100, Math.round((server.value.online / server.value.max) * 100))
-})
-
-async function loadServer() {
-  try {
-    const r = await fetch(`https://monicore.com.ua/api/servers/server/${MONICORE_SERVER_ID}/widget/`)
-    if (!r.ok) throw new Error(r.status)
-    const d = await r.json()
-    server.value = { online: Number(d.online || 0), max: Number(d.max || 0), isOnline: !!d.is_online }
-    serverError.value = false
-  } catch (e) {
-    serverError.value = true
-  }
-}
-
 // ====== DISCORD (офіційний віджет, тема підлаштовується під сайт) ======
 const discordTheme = ref('dark')
 const discordSrc = computed(() => `https://discord.com/widget?id=${DISCORD_GUILD_ID}&theme=${discordTheme.value}`)
@@ -127,7 +97,6 @@ function loadFund() {
     })
 }
 
-let timer = null
 let observer = null
 
 onMounted(() => {
@@ -155,14 +124,21 @@ onMounted(() => {
   observer = new MutationObserver(syncTheme)
   observer.observe(html, { attributes: true, attributeFilter: ['class'] })
 
-  loadServer()
+  // Офіційний віджет Monicore (показує статус і онлайн сервера)
+  const widgetContainer = document.getElementById('monicore-widget-container')
+  if (widgetContainer && widgetContainer.childElementCount === 0) {
+    const script = document.createElement('script')
+    script.src = 'https://monicore.com.ua/static/widget.js'
+    script.setAttribute('data-server-id', String(MONICORE_SERVER_ID))
+    script.async = true
+    widgetContainer.appendChild(script)
+  }
+
   loadDiscordInvite()
   loadFund()
-  timer = setInterval(loadServer, 60000)
 })
 
 onUnmounted(() => {
-  if (timer) clearInterval(timer)
   if (observer) observer.disconnect()
 })
 </script>
@@ -174,18 +150,7 @@ onUnmounted(() => {
 
 <section class="hua-side">
   <div class="hua-card hua-server">
-    <div class="hua-server-head">
-      <img class="hua-server-logo" src="/logo.png" alt="HytaleUA" />
-      <div>
-        <div class="hua-server-name">HytaleUA</div>
-        <div class="hua-badge" :class="statusClass"><span class="hua-dot"></span>{{ statusText }}</div>
-      </div>
-    </div>
-    <div class="hua-players" v-if="hasPlayerData">
-      <div class="hua-players-row"><span>Гравці онлайн</span><strong>{{ server.online }} / {{ server.max }}</strong></div>
-      <div class="hua-bar"><div class="hua-bar-fill" :style="{ width: playersPercent + '%' }"></div></div>
-    </div>
-    <div class="hua-players-empty" v-else>Лічильник гравців недоступний</div>
+    <div id="monicore-widget-container" class="hua-monicore"></div>
     <button class="hua-btn hua-btn-gold" type="button" @click="copyIp">{{ copied ? '✅ Скопійовано!' : '📋 play.hytaleua.com.ua' }}</button>
     <a class="hua-link" href="/wiki/getting-started">Як приєднатися →</a>
   </div>
@@ -279,23 +244,8 @@ onUnmounted(() => {
   position: relative; z-index: 1;
 }
 .hua-server { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
-.hua-server-head { display: flex; align-items: center; gap: 14px; }
-.hua-server-logo { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; background: rgba(255, 255, 255, 0.04); }
-.hua-server-name { font-size: 20px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
-
-.hua-badge { display: inline-flex; align-items: center; gap: 8px; padding: 3px 12px 3px 10px; border-radius: 50px; font-size: 12px; font-weight: 700; background: rgba(255, 255, 255, 0.06); color: var(--vp-c-text-2); }
-.hua-badge .hua-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--vp-c-text-3); }
-.hua-badge.on { background: rgba(61, 220, 132, 0.12); color: #3ddc84; }
-.hua-badge.on .hua-dot { background: #3ddc84; animation: hua-pulse 2s infinite; }
-.hua-badge.off { background: rgba(255, 82, 82, 0.12); color: #ff5252; }
-.hua-badge.off .hua-dot { background: #ff5252; }
-@keyframes hua-pulse { 0% { box-shadow: 0 0 0 0 rgba(61, 220, 132, .6); } 70% { box-shadow: 0 0 0 8px rgba(61, 220, 132, 0); } 100% { box-shadow: 0 0 0 0 rgba(61, 220, 132, 0); } }
-
-.hua-players-row { display: flex; justify-content: space-between; font-size: 14px; color: var(--vp-c-text-2); margin-bottom: 8px; }
-.hua-players-row strong { color: var(--vp-c-text-1); }
-.hua-bar { height: 8px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
-.hua-bar-fill { height: 100%; border-radius: 8px; background: linear-gradient(90deg, #0057b7, #ffd700); transition: width 1s ease; }
-.hua-players-empty { font-size: 13px; color: var(--vp-c-text-3); }
+.hua-monicore { width: 100%; }
+.hua-monicore > div { max-width: 100% !important; margin: 0 auto; }
 
 .hua-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 700; text-decoration: none !important; cursor: pointer; border: 2px solid transparent; transition: all .25s ease; }
 .hua-btn:hover { transform: translateY(-2px); }
