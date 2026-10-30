@@ -24,9 +24,6 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 const SERVER_IP = 'play.hytaleua.com.ua:15805'
 const MONICORE_SERVER_ID = 430
 const DISCORD_GUILD_ID = '1461345250189508801'
-// Постійне посилання-запрошення в Discord (https://discord.gg/...). Якщо у віджеті Discord
-// вже вказано канал для запрошення — можна залишити порожнім.
-const DISCORD_INVITE_FALLBACK = ''
 // Скріншоти: поклади файли в папку public/screens/ і впиши імена, напр. ['spawn.jpg', 'castle.jpg']
 const screenshots = []
 
@@ -42,12 +39,22 @@ const features = [
   { icon: '⚔', title: 'Стабільність', details: 'Стабільність понад усе! Регулярні бекапи світу, постійна робота над швидкодією і безпекою сервера! Будьте впевнені, ваш прогрес у надійних руках.' }
 ]
 
-// ====== ОНЛАЙН СЕРВЕРА ======
+// ====== СТАТУС СЕРВЕРА (дані з Monicore) ======
 const server = ref(null)
 const serverError = ref(false)
-const serverText = computed(() => {
-  if (server.value) return `${server.value.online} / ${server.value.max}`
-  return serverError.value ? '—' : '...'
+
+const hasPlayerData = computed(() => !!server.value && server.value.max > 0)
+const statusClass = computed(() => {
+  if (!server.value) return 'unknown'
+  return server.value.isOnline ? 'on' : 'off'
+})
+const statusText = computed(() => {
+  if (!server.value) return serverError.value ? 'Немає даних' : 'Завантаження…'
+  return server.value.isOnline ? 'Онлайн' : 'Офлайн'
+})
+const playersPercent = computed(() => {
+  if (!hasPlayerData.value) return 0
+  return Math.min(100, Math.round((server.value.online / server.value.max) * 100))
 })
 
 async function loadServer() {
@@ -62,26 +69,9 @@ async function loadServer() {
   }
 }
 
-// ====== ОНЛАЙН DISCORD ======
-const discord = ref(null)
-const discordError = ref(false)
-const discordText = computed(() => {
-  if (discord.value) return String(discord.value.online)
-  return discordError.value ? '—' : '...'
-})
-const discordLink = computed(() => (discord.value && discord.value.invite) || DISCORD_INVITE_FALLBACK)
-
-async function loadDiscord() {
-  try {
-    const r = await fetch(`https://discord.com/api/guilds/${DISCORD_GUILD_ID}/widget.json`)
-    if (!r.ok) throw new Error(r.status)
-    const d = await r.json()
-    discord.value = { online: Number(d.presence_count || 0), invite: d.instant_invite || '' }
-    discordError.value = false
-  } catch (e) {
-    discordError.value = true
-  }
-}
+// ====== DISCORD (офіційний віджет, тема підлаштовується під сайт) ======
+const discordTheme = ref('dark')
+const discordSrc = computed(() => `https://discord.com/widget?id=${DISCORD_GUILD_ID}&theme=${discordTheme.value}`)
 
 // ====== КОПІЮВАННЯ IP ======
 const copied = ref(false)
@@ -124,6 +114,7 @@ function loadFund() {
 }
 
 let timer = null
+let observer = null
 
 onMounted(() => {
   // Кнопка копіювання IP у hero
@@ -143,14 +134,22 @@ onMounted(() => {
     })
   }
 
+  // Тема Discord-віджета слідує за темою сайту
+  const html = document.documentElement
+  const syncTheme = () => { discordTheme.value = html.classList.contains('dark') ? 'dark' : 'light' }
+  syncTheme()
+  observer = new MutationObserver(syncTheme)
+  observer.observe(html, { attributes: true, attributeFilter: ['class'] })
+
   loadServer()
-  loadDiscord()
   loadFund()
-  // Оновлюємо онлайн раз на хвилину
-  timer = setInterval(() => { loadServer(); loadDiscord() }, 60000)
+  timer = setInterval(loadServer, 60000)
 })
 
-onUnmounted(() => { if (timer) clearInterval(timer) })
+onUnmounted(() => {
+  if (timer) clearInterval(timer)
+  if (observer) observer.disconnect()
+})
 </script>
 
 <div class="bg-glow">
@@ -158,18 +157,25 @@ onUnmounted(() => { if (timer) clearInterval(timer) })
   <div class="blob yellow"></div>
 </div>
 
-<section class="hua-stats">
-  <div class="hua-stat-card">
-    <div class="hua-stat-head"><span class="hua-dot" :class="{ on: server && server.isOnline, off: server && !server.isOnline }"></span>Ігровий сервер</div>
-    <div class="hua-stat-value">{{ serverText }}</div>
-    <div class="hua-stat-sub">гравців онлайн</div>
+<section class="hua-side">
+  <div class="hua-card hua-server">
+    <div class="hua-server-head">
+      <img class="hua-server-logo" src="/logo.png" alt="HytaleUA" />
+      <div>
+        <div class="hua-server-name">HytaleUA</div>
+        <div class="hua-badge" :class="statusClass"><span class="hua-dot"></span>{{ statusText }}</div>
+      </div>
+    </div>
+    <div class="hua-players" v-if="hasPlayerData">
+      <div class="hua-players-row"><span>Гравці онлайн</span><strong>{{ server.online }} / {{ server.max }}</strong></div>
+      <div class="hua-bar"><div class="hua-bar-fill" :style="{ width: playersPercent + '%' }"></div></div>
+    </div>
+    <div class="hua-players-empty" v-else>Лічильник гравців недоступний</div>
     <button class="hua-btn hua-btn-gold" type="button" @click="copyIp">{{ copied ? '✅ Скопійовано!' : '📋 play.hytaleua.com.ua' }}</button>
+    <a class="hua-link" href="/wiki/getting-started">Як приєднатися →</a>
   </div>
-  <div class="hua-stat-card">
-    <div class="hua-stat-head"><span class="hua-dot" :class="{ on: discord }"></span>Discord спільнота</div>
-    <div class="hua-stat-value">{{ discordText }}</div>
-    <div class="hua-stat-sub">учасників онлайн</div>
-    <a v-if="discordLink" class="hua-btn hua-btn-blue" :href="discordLink" target="_blank" rel="noopener">💬 Приєднатися до Discord</a>
+  <div class="hua-card hua-discord">
+    <iframe :src="discordSrc" title="Discord HytaleUA" width="100%" height="480" allowtransparency="true" frameborder="0" loading="lazy" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
   </div>
 </section>
 
@@ -236,53 +242,65 @@ onUnmounted(() => { if (timer) clearInterval(timer) })
 .VPHome .VPHero .tagline { max-width: 560px; }
 
 /* ---------- Спільне ---------- */
-.hua-stats, .hua-section {
-  max-width: 1152px;
-  margin: 0 auto;
-  padding: 0 24px;
-  position: relative;
-  z-index: 1;
-}
-.hua-section { padding-top: 56px; }
+.hua-section { max-width: 1152px; margin: 0 auto; padding: 56px 24px 0; position: relative; z-index: 1; }
 .hua-title { margin: 0; padding: 0; border: none; text-align: center; font-size: 30px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
 .hua-title span { background: linear-gradient(120deg, #3d9bff, #ffd700); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hua-lead { margin: 10px 0 32px; text-align: center; color: var(--vp-c-text-2); font-size: 16px; }
 
-/* ---------- Онлайн ---------- */
-.hua-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding-top: 16px; }
-.hua-stat-card {
+.hua-card {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 18px;
-  padding: 24px;
-  display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  transition: transform .25s ease, border-color .25s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
 }
-.hua-stat-card:hover { transform: translateY(-3px); border-color: rgba(255, 215, 0, 0.45); }
-.hua-stat-head { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--vp-c-text-2); text-transform: uppercase; letter-spacing: .06em; }
-.hua-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--vp-c-text-3); }
-.hua-dot.on { background: #3ddc84; box-shadow: 0 0 0 0 rgba(61, 220, 132, .6); animation: hua-pulse 2s infinite; }
-.hua-dot.off { background: #ff5252; }
-@keyframes hua-pulse { 70% { box-shadow: 0 0 0 9px rgba(61, 220, 132, 0); } 100% { box-shadow: 0 0 0 0 rgba(61, 220, 132, 0); } }
-.hua-stat-value { margin-top: 8px; font-size: 44px; font-weight: 800; line-height: 1.1; color: var(--vp-c-text-1); }
-.hua-stat-sub { color: var(--vp-c-text-2); font-size: 14px; margin-bottom: 14px; }
+
+/* ---------- Бічні блоки: сервер + Discord ----------
+   Широкий екран (≥1840px): зліва сервер, справа Discord, не займають місце в контенті.
+   Вужчий екран: два блоки в ряд під hero. */
+.hua-side {
+  max-width: 1152px; margin: 0 auto; padding: 16px 24px 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: stretch;
+  position: relative; z-index: 1;
+}
+.hua-server { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.hua-server-head { display: flex; align-items: center; gap: 14px; }
+.hua-server-logo { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; background: rgba(255, 255, 255, 0.04); }
+.hua-server-name { font-size: 20px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+
+.hua-badge { display: inline-flex; align-items: center; gap: 8px; padding: 3px 12px 3px 10px; border-radius: 50px; font-size: 12px; font-weight: 700; background: rgba(255, 255, 255, 0.06); color: var(--vp-c-text-2); }
+.hua-badge .hua-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--vp-c-text-3); }
+.hua-badge.on { background: rgba(61, 220, 132, 0.12); color: #3ddc84; }
+.hua-badge.on .hua-dot { background: #3ddc84; animation: hua-pulse 2s infinite; }
+.hua-badge.off { background: rgba(255, 82, 82, 0.12); color: #ff5252; }
+.hua-badge.off .hua-dot { background: #ff5252; }
+@keyframes hua-pulse { 0% { box-shadow: 0 0 0 0 rgba(61, 220, 132, .6); } 70% { box-shadow: 0 0 0 8px rgba(61, 220, 132, 0); } 100% { box-shadow: 0 0 0 0 rgba(61, 220, 132, 0); } }
+
+.hua-players-row { display: flex; justify-content: space-between; font-size: 14px; color: var(--vp-c-text-2); margin-bottom: 8px; }
+.hua-players-row strong { color: var(--vp-c-text-1); }
+.hua-bar { height: 8px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+.hua-bar-fill { height: 100%; border-radius: 8px; background: linear-gradient(90deg, #0057b7, #ffd700); transition: width 1s ease; }
+.hua-players-empty { font-size: 13px; color: var(--vp-c-text-3); }
+
 .hua-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 700; text-decoration: none !important; cursor: pointer; border: 2px solid transparent; transition: all .25s ease; }
 .hua-btn:hover { transform: translateY(-2px); }
 .hua-btn-gold { background: rgba(255, 215, 0, 0.12); color: #ffd700; border-color: rgba(255, 215, 0, 0.45); }
 .hua-btn-gold:hover { background: #ffd700; color: #1a1a1a; }
-.hua-btn-blue { background: #5865f2; color: #fff !important; }
-.hua-btn-blue:hover { background: #4752c4; }
+.hua-link { font-size: 14px; font-weight: 600; color: var(--vp-c-brand-1); text-decoration: none; text-align: center; }
+.hua-link:hover { text-decoration: underline; }
+
+.hua-discord { overflow: hidden; padding: 0; }
+.hua-discord iframe { display: block; width: 100%; height: 480px; border: 0; }
+
+@media (min-width: 1840px) {
+  .hua-side { display: block; padding: 0; max-width: none; margin: 0; }
+  .hua-server, .hua-discord { position: fixed; top: 96px; width: 300px; z-index: 10; }
+  .hua-server { left: calc(50% - 900px); }
+  .hua-discord { left: calc(50% + 600px); }
+}
 
 /* ---------- Features ---------- */
 .hua-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.hua-feature {
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 18px;
-  padding: 24px;
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
+.hua-feature { background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 18px; padding: 24px; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
 .hua-feature:hover { transform: translateY(-4px); border-color: rgba(61, 155, 255, 0.5); box-shadow: 0 12px 32px rgba(0, 87, 183, 0.22); }
 .hua-feature-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 24px; border-radius: 14px; margin-bottom: 14px; background: linear-gradient(135deg, rgba(0, 87, 183, .35), rgba(255, 215, 0, .25)); }
 .hua-feature h3 { margin: 0 0 8px; padding: 0; font-size: 17px; font-weight: 700; line-height: 1.4; }
@@ -324,8 +342,10 @@ onUnmounted(() => { if (timer) clearInterval(timer) })
 @media (max-width: 960px) {
   .hua-features { grid-template-columns: repeat(2, 1fr); }
 }
+@media (max-width: 768px) {
+  .hua-side { grid-template-columns: 1fr; }
+}
 @media (max-width: 640px) {
-  .hua-stats { grid-template-columns: 1fr; }
   .hua-features { grid-template-columns: 1fr; }
   .hua-section { padding-top: 40px; }
   .hua-title { font-size: 26px; }
