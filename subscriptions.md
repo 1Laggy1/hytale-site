@@ -14,7 +14,7 @@ title: Статуси
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">QUARTZ</h2>
       <div style="font-size: 32px; font-weight: bold; color: #6c757d; margin-bottom: 25px;">50 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ 30 днів</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
-        <li>   15 чанків привату</li>
+        <li>✅ 15 чанків привату</li>
         <li>✅ Зміна кольору нікнейму <b>/namecolor</b></li>
         <li>✅ +2 точки <b>/home</b></li>
         <li>✅ Збільшений ліміт ігрових порталів до 16</li>
@@ -62,6 +62,7 @@ title: Статуси
       <button @click="openModal('ruby')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #a50727; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Придбати статус</button>
     </div>
   </div>
+</div>
 <div v-if="isModalOpen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(5px);">
   <div style="background: var(--vp-c-bg); padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; border: 1px solid var(--vp-c-divider); box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
     <h3 style="margin-top: 0; margin-bottom: 20px; color: var(--vp-c-text-1);">Оформлення замовлення</h3>
@@ -69,15 +70,10 @@ title: Статуси
     <input v-model="nickname" type="text" placeholder="Приклад: Andryushka" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Discord Нікнейм (username):</label>
     <input v-model="discordId" type="text" placeholder="Приклад: laggyua" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
-    
     <label style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 13px; color: var(--vp-c-text-2); cursor: pointer; text-align: left;">
       <input v-model="acceptOffer" type="checkbox" style="width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; margin-top: 2px;" />
       <span>Я погоджуюсь з умовами <a href="/" style="color: var(--vp-c-brand); text-decoration: underline;">Договору публічної оферти</a> та розумію, що кошти за цифрові товари поверненню не підлягають.</span>
     </label>
-
-    <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 8px 12px; margin-bottom: 20px; border-radius: 4px; font-size: 11px; color: var(--vp-c-text-2); line-height: 1.4;">
-      ⚠ <b>Не змінюйте суму та коментар на сторінці оплати!</b> Там вписано ваш унікальний код замовлення — без нього система не нарахує статус.
-    </div>
     <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
       <button @click="submitForm" :disabled="isLoading" class="mono-pay-btn">

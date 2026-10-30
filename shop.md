@@ -18,7 +18,7 @@ title: Магазин
         <li>✅ Можливість будувати більші бази</li>
         <li>✅ Назавжди залишається на акаунті</li>
       </ul>
-      <button @click="openModal('chunks', 'Додаткові чанки', 3)" class="shop-button" style="width: 100%; border: none; cursor: pointer; display: block; background: var(--vp-c-brand); color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Придбати</button>
+      <button @click="openModal('chunks', 'Додаткові чанки', 5)" class="shop-button" style="width: 100%; border: none; cursor: pointer; display: block; background: var(--vp-c-brand); color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Придбати</button>
     </div>
   </div>
 </div>
@@ -33,13 +33,11 @@ title: Магазин
       <input v-model="quantity" type="number" min="1" max="1000" style="width: 100px; box-sizing: border-box; padding: 12px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
       <div style="font-size: 18px; font-weight: bold; color: var(--vp-c-text-1);">До сплати: <span style="color: var(--vp-c-brand);">{{ quantity * selectedItemPrice }} грн</span></div>
     </div>
-    
     <label style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 13px; color: var(--vp-c-text-2); cursor: pointer; text-align: left;">
       <input v-model="acceptOffer" type="checkbox" style="width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; margin-top: 2px;" />
       <span>Я погоджуюсь з умовами <a href="/" style="color: var(--vp-c-brand); text-decoration: underline;">Договору публічної оферти</a> та розумію, що цифрові товари поверненню не підлягають.</span>
     </label>
-
- <div style="display: flex; gap: 10px;">
+    <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
       <button @click="submitPayment" :disabled="isLoading" class="mono-pay-btn">
         <span v-if="isLoading">Обробка...</span>
