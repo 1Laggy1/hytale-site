@@ -66,6 +66,47 @@ function copyIp() {
   })
 }
 
+// ====== СЛАЙДЕР СКРІНШОТІВ ======
+const AUTOPLAY_MS = 5000
+const slide = ref(0)
+const maxSeen = ref(0)
+const paused = ref(false)
+let autoTimer = null
+let touchX = null
+
+// Підвантажуємо поточний слайд, наступний і останній (для кнопки «назад» з першого), решту — коли дійдемо
+const shouldLoad = (i) => i <= maxSeen.value + 1 || i === screenshots.length - 1
+
+function setSlide(i) {
+  const n = screenshots.length
+  slide.value = ((i % n) + n) % n
+  if (slide.value > maxSeen.value) maxSeen.value = slide.value
+}
+function stopAuto() {
+  if (autoTimer) { clearInterval(autoTimer); autoTimer = null }
+}
+function startAuto() {
+  stopAuto()
+  if (screenshots.length < 2) return
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  autoTimer = setInterval(() => {
+    if (!paused.value && !document.hidden) setSlide(slide.value + 1)
+  }, AUTOPLAY_MS)
+}
+// Ручне перемикання теж скидає таймер, щоб слайд не змінився одразу після кліку
+function go(i) { setSlide(i); startAuto() }
+function next() { go(slide.value + 1) }
+function prev() { go(slide.value - 1) }
+
+function onTouchStart(e) { touchX = e.touches[0].clientX; paused.value = true }
+function onTouchEnd(e) {
+  paused.value = false
+  if (touchX === null) return
+  const dx = e.changedTouches[0].clientX - touchX
+  touchX = null
+  if (Math.abs(dx) > 40) { dx < 0 ? next() : prev() }
+}
+
 // ====== ФОНД РОЗВИТКУ ======
 const current = ref(null)
 const target = ref(null)
@@ -136,10 +177,12 @@ onMounted(() => {
 
   loadDiscordInvite()
   loadFund()
+  startAuto()
 })
 
 onUnmounted(() => {
   if (observer) observer.disconnect()
+  stopAuto()
 })
 </script>
 
@@ -160,6 +203,26 @@ onUnmounted(() => {
   </div>
 </section>
 
+<section class="hua-section" v-if="screenshots.length">
+  <h2 class="hua-title">Наш <span>світ</span></h2>
+  <p class="hua-lead">Трохи кадрів з Orbis.</p>
+  <div class="hua-slider" role="region" aria-roledescription="carousel" aria-label="Скріншоти сервера HytaleUA" tabindex="0" @mouseenter="paused = true" @mouseleave="paused = false" @touchstart.passive="onTouchStart" @touchend.passive="onTouchEnd" @keydown.left.prevent="prev" @keydown.right.prevent="next">
+    <div class="hua-slide" v-for="(s, i) in screenshots" :key="s" :class="{ active: i === slide }" :aria-hidden="i !== slide">
+      <img :src="shouldLoad(i) ? '/screens/' + s : undefined" :alt="'Скріншот сервера HytaleUA ' + (i + 1)" draggable="false" />
+    </div>
+    <template v-if="screenshots.length > 1">
+      <button class="hua-slider-btn prev" type="button" aria-label="Попередній кадр" @click="prev">‹</button>
+      <button class="hua-slider-btn next" type="button" aria-label="Наступний кадр" @click="next">›</button>
+      <div class="hua-slider-bar">
+        <div class="hua-slider-dots">
+          <button v-for="(s, i) in screenshots" :key="s" class="hua-sdot" :class="{ active: i === slide }" type="button" :aria-label="'Кадр ' + (i + 1)" @click="go(i)"></button>
+        </div>
+        <span class="hua-slider-counter">{{ slide + 1 }} / {{ screenshots.length }}</span>
+      </div>
+    </template>
+  </div>
+</section>
+
 <section class="hua-section">
   <h2 class="hua-title">Чому <span>HytaleUA</span></h2>
   <p class="hua-lead">Все, що потрібно для комфортної гри з друзями, в одному місці.</p>
@@ -169,14 +232,6 @@ onUnmounted(() => {
       <h3>{{ f.title }}</h3>
       <p>{{ f.details }}</p>
     </article>
-  </div>
-</section>
-
-<section class="hua-section" v-if="screenshots.length">
-  <h2 class="hua-title">Наш <span>світ</span></h2>
-  <p class="hua-lead">Трохи кадрів з Orbis.</p>
-  <div class="hua-gallery">
-    <img v-for="s in screenshots" :key="s" :src="'/screens/' + s" alt="Скріншот сервера HytaleUA" loading="lazy" />
   </div>
 </section>
 
@@ -275,10 +330,33 @@ onUnmounted(() => {
 .hua-feature h3 { margin: 0 0 8px; padding: 0; font-size: 17px; font-weight: 700; line-height: 1.4; }
 .hua-feature p { margin: 0; color: var(--vp-c-text-2); font-size: 14px; line-height: 1.65; }
 
-/* ---------- Галерея ---------- */
-.hua-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-.hua-gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; border: 1px solid var(--vp-c-divider); transition: transform .25s ease; }
-.hua-gallery img:hover { transform: scale(1.02); }
+/* ---------- Слайдер скріншотів ---------- */
+.hua-slider { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 72vh; overflow: hidden; border-radius: 20px; border: 1px solid var(--vp-c-divider); background: #0d0d10; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35); outline: none; user-select: none; }
+.hua-slider:focus-visible { box-shadow: 0 0 0 3px rgba(61, 155, 255, 0.6), 0 16px 48px rgba(0, 0, 0, 0.35); }
+.hua-slide { position: absolute; inset: 0; opacity: 0; transform: scale(1.03); transition: opacity .8s ease, transform 1.2s ease; pointer-events: none; }
+.hua-slide.active { opacity: 1; transform: scale(1); pointer-events: auto; }
+.hua-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hua-slider::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent); pointer-events: none; }
+
+.hua-slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(0, 0, 0, 0.45); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0 0 4px; backdrop-filter: blur(6px); transition: background .25s ease, transform .25s ease, opacity .25s ease; opacity: 0.85; }
+.hua-slider-btn:hover { background: rgba(0, 0, 0, 0.75); opacity: 1; transform: translateY(-50%) scale(1.08); }
+.hua-slider-btn.prev { left: 16px; }
+.hua-slider-btn.next { right: 16px; }
+
+.hua-slider-bar { position: absolute; left: 0; right: 0; bottom: 14px; z-index: 2; display: flex; align-items: center; justify-content: center; padding: 0 20px; }
+.hua-slider-dots { display: flex; gap: 8px; }
+.hua-sdot { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.45); cursor: pointer; transition: all .3s ease; }
+.hua-sdot:hover { background: rgba(255, 255, 255, 0.8); }
+.hua-sdot.active { width: 26px; border-radius: 8px; background: #ffd700; }
+.hua-slider-counter { position: absolute; right: 20px; font-size: 13px; font-weight: 700; color: rgba(255, 255, 255, 0.85); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7); }
+
+@media (max-width: 640px) {
+  .hua-slider { border-radius: 14px; max-height: none; }
+  .hua-slider-btn { width: 36px; height: 36px; font-size: 22px; }
+  .hua-slider-btn.prev { left: 8px; }
+  .hua-slider-btn.next { right: 8px; }
+  .hua-slider-counter { display: none; }
+}
 
 /* ---------- Фонд розвитку ---------- */
 .fund-section { max-width: 960px; margin: 0 auto; padding: 64px 24px 64px; position: relative; z-index: 1; }
