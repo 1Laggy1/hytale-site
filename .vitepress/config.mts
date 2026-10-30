@@ -12,8 +12,6 @@ export default defineConfig({
     logo: '/logo.png',
     nav: [
       { text: 'Головна', link: '/' },
-      { text: '🔮 Статуси', link: '/subscriptions' },
-      { text: '🛒 Магазин', link: '/shop/' },
       { text: 'Discord', link: 'https://discord.gg/JS75DCe9Dk' }
     ],
     socialLinks: [
