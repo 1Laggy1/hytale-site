@@ -14,7 +14,7 @@ export default defineConfig({
       { text: 'Головна', link: '/' },
       { text: '🔮 Статуси', link: '/subscriptions' },
       { text: '💖 Підтримати', link: '/support' },
-      { text: '🎁 Нагороди', link: '/shop/' },
+      { text: '🛒 Магазин', link: '/shop/' },
       { text: 'Discord', link: 'https://discord.gg/JS75DCe9Dk' }
     ],
     socialLinks: [
