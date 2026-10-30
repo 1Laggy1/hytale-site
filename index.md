@@ -97,7 +97,7 @@ onMounted(() => {
       <strong>Email:</strong> andrew.shchigol@proton.me | <strong>Discord:</strong> <a href="https://discord.gg/JS75DCe9Dk" target="_blank">Служба підтримки</a>
     </p>
 
-    <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--vp-c-text-1);">Договір публічної оферти</h4>
+<h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--vp-c-text-1);">Договір публічної оферти</h4>
     <p style="margin-top: 0;">Здійснюючи оплату на сайті hytaleua.com.ua, користувач купує доступ до цифрового контенту та додаткових віртуальних функцій ігрового сервера HytaleUA (надалі - Послуги). Всі цифрові товари та послуги надаються на умовах «як є» (as is). Послуга вважається повністю наданою в момент активації віртуальних предметів або статусів на обліковому записі користувача в грі. Користувач підтверджує, що йому виповнилося 18 років, або він здійснює покупку з дозволу батьків чи опікунів.</p>
     
     <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--vp-c-text-1);">Політика повернення коштів (Refund Policy)</h4>
