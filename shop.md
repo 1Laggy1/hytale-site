@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Нагороди
+title: Магазин
 ---
 
 <div style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; font-family: sans-serif;">
   <div style="text-align: center; margin-bottom: 50px;">
-    <h1 style="font-size: 48px; font-weight: 800; color: var(--vp-c-text-1); margin-bottom: 10px;">Ігрові Нагороди</h1>
-    <p style="font-size: 18px; color: var(--vp-c-text-2);">Підтримайте сервер та отримайте корисні бонуси в грі</p>
+    <h1 style="font-size: 48px; font-weight: 800; color: var(--vp-c-text-1); margin-bottom: 10px;">Цифрові товари</h1>
+    <p style="font-size: 18px; color: var(--vp-c-text-2);">Придбайте корисні цифрові покращення для гри</p>
   </div>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
     <div class="shop-card" style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 40px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease;">
@@ -18,29 +18,35 @@ title: Нагороди
         <li>✅ Можливість будувати більші бази</li>
         <li>✅ Назавжди залишається на акаунті</li>
       </ul>
-      <button @click="openModal('chunks', 'Додаткові чанки', 3)" class="shop-button" style="width: 100%; border: none; cursor: pointer; display: block; background: var(--vp-c-brand); color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати</button>
+      <button @click="openModal('chunks', 'Додаткові чанки', 3)" class="shop-button" style="width: 100%; border: none; cursor: pointer; display: block; background: var(--vp-c-brand); color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Придбати</button>
     </div>
   </div>
 </div>
 <div v-if="isModalOpen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(5px);">
   <div style="background: var(--vp-c-bg); padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; border: 1px solid var(--vp-c-divider); box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-    <h3 style="margin-top: 0; margin-bottom: 5px; color: var(--vp-c-text-1);">Отримання нагороди</h3>
-    <div style="color: var(--vp-c-brand); font-weight: bold; margin-bottom: 20px; font-size: 18px;">Бонус: {{ selectedItemName }}</div>
+    <h3 style="margin-top: 0; margin-bottom: 5px; color: var(--vp-c-text-1);">Оформлення замовлення</h3>
+    <div style="color: var(--vp-c-brand); font-weight: bold; margin-bottom: 20px; font-size: 18px;">Товар: {{ selectedItemName }}</div>
     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Ваш ігровий нікнейм:</label>
     <input v-model="shopNickname" type="text" placeholder="Приклад: Andryushka" style="width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
     <label style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--vp-c-text-2);">Кількість:</label>
     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
       <input v-model="quantity" type="number" min="1" max="1000" style="width: 100px; box-sizing: border-box; padding: 12px; border-radius: 8px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg-soft); color: var(--vp-c-text-1);" />
-      <div style="font-size: 18px; font-weight: bold; color: var(--vp-c-text-1);">Сума підтримки: <span style="color: var(--vp-c-brand);">{{ quantity * selectedItemPrice }} грн</span></div>
+      <div style="font-size: 18px; font-weight: bold; color: var(--vp-c-text-1);">До сплати: <span style="color: var(--vp-c-brand);">{{ quantity * selectedItemPrice }} грн</span></div>
     </div>
+    
+    <label style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 13px; color: var(--vp-c-text-2); cursor: pointer; text-align: left;">
+      <input v-model="acceptOffer" type="checkbox" style="width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; margin-top: 2px;" />
+      <span>Я погоджуюсь з умовами <a href="/" style="color: var(--vp-c-brand); text-decoration: underline;">Договору публічної оферти</a> та розумію, що цифрові товари поверненню не підлягають.</span>
+    </label>
+
     <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 8px 12px; margin-bottom: 20px; border-radius: 4px; font-size: 11px; color: var(--vp-c-text-2); line-height: 1.4;">
-      ⚠️ <b>Не змінюйте суму та коментар на сторінці Банки!</b> Там вписано унікальний код — без нього бот не зможе видати вам бонус.
-    </div> 
+      ⚠ <b>Не змінюйте суму та коментар на сторінці оплати!</b> Там вписано унікальний код замовлення — без нього система не зможе видати вам товар.
+    </div>  
     <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
       <button @click="submitPayment" :disabled="isLoading" class="mono-pay-btn">
         <span v-if="isLoading">Обробка...</span>
-        <span v-else>Підтримати монобанком</span>
+        <span v-else>Оплатити</span>
       </button>
     </div>
   </div>
@@ -56,15 +62,17 @@ title: Нагороди
 import { ref } from 'vue'
 
 const isModalOpen = ref(false), selectedItemId = ref(''), selectedItemName = ref(''), selectedItemPrice = ref(0)
-const shopNickname = ref(''), quantity = ref(1), isLoading = ref(false)
+const shopNickname = ref(''), quantity = ref(1), acceptOffer = ref(false), isLoading = ref(false)
 
-const openModal = (id, name, price) => { selectedItemId.value = id; selectedItemName.value = name; selectedItemPrice.value = price; quantity.value = 1; isModalOpen.value = true; }
+const openModal = (id, name, price) => { selectedItemId.value = id; selectedItemName.value = name; selectedItemPrice.value = price; quantity.value = 1; acceptOffer.value = false; isModalOpen.value = true; }
 const closeModal = () => { isModalOpen.value = false; }
 
 const submitPayment = async () => {
   if (!shopNickname.value) { alert("Введіть нікнейм!"); return; }
+  if (!acceptOffer.value) { alert("Будь ласка, погодьтесь з умовами публічної оферти перед оплатою!"); return; }
+  
   const total = quantity.value * selectedItemPrice.value;
-  if (total < 10) { alert("Мінімальний внесок — 10 грн. Будь ласка, збільште кількість."); return; }
+  if (total < 10) { alert("Мінімальна сума замовлення — 10 грн. Будь ласка, збільште кількість."); return; }
   
   isLoading.value = true;
   try {
