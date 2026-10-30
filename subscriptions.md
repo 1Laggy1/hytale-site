@@ -5,7 +5,7 @@ title: Статуси
 
 <div style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; font-family: sans-serif;">
   <div style="text-align: center; margin-bottom: 50px;">
-    <h1 style="font-size: 48px; font-weight: 800; color: var(--vp-c-text-1); margin-bottom: 10px;">Магазин статусів</h1>
+    <h1 style="font-size: 48px; font-weight: 800; color: var(--vp-c-text-1); margin-bottom: 10px;">Статуси</h1>
     <p style="font-size: 18px; color: var(--vp-c-text-2);">Придбайте преміум статус та отримайте унікальні ігрові можливості</p>
   </div>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">    
@@ -14,6 +14,7 @@ title: Статуси
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">QUARTZ</h2>
       <div style="font-size: 32px; font-weight: bold; color: #6c757d; margin-bottom: 25px;">50 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ 30 днів</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
+        <li>   15 чанків привату</li>
         <li>✅ Зміна кольору нікнейму <b>/namecolor</b></li>
         <li>✅ +2 точки <b>/home</b></li>
         <li>✅ Збільшений ліміт ігрових порталів до 16</li>
@@ -28,6 +29,7 @@ title: Статуси
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">AMETHYST</h2>
       <div style="font-size: 32px; font-weight: bold; color: #bd00ed; margin-bottom: 25px;">180 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ 30 днів</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
+        <li>✅ 50 чанків привату</li>
         <li>✅ Все, що є в <b>Quartz</b></li>
         <li>✅ Зміна префіксу <b>/prefix /prefixcolor</b></li>
         <li>✅ +5 точок <b>/home</b></li>
@@ -46,6 +48,7 @@ title: Статуси
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">RUBY</h2>
       <div style="font-size: 32px; font-weight: bold; color: #a50727; margin-bottom: 25px;">390 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ 30 днів</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
+        <li>✅ 100 чанків привату</li>
         <li>✅ Все, що є в <b>Amethyst</b></li>
         <li>✅ Зміна суфіксу</li>
         <li>✅ Веселковий нікнейм і ефекти</li>
@@ -59,15 +62,6 @@ title: Статуси
       <button @click="openModal('ruby')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #a50727; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Придбати статус</button>
     </div>
   </div>
-  <div style="margin-top: 60px; padding: 30px; background: var(--vp-c-bg-soft); border-radius: 20px; border: 1px dashed var(--vp-c-divider); text-align: center;">
-    <h3 style="color: var(--vp-c-text-1); margin-bottom: 15px;">ℹ Важлива інформація</h3>
-    <p style="color: var(--vp-c-text-2); font-size: 16px; line-height: 1.6; max-width: 800px; margin: 0 auto;">
-      Ми не використовуємо автоматичні підписки (рекурентні платежі). Кожна оплата є <b>одноразовою покупкою</b> доступу до статусу на 30 днів. Гроші не будуть списуватися автоматично наступного місяця.
-      <br><br>
-      Наш Discord-бот автоматично надішле вам сповіщення за <b>3 дні</b> до закінчення терміну дії статусу з посиланням на можливість повторного замовлення.
-    </p>
-  </div>
-</div>
 <div v-if="isModalOpen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(5px);">
   <div style="background: var(--vp-c-bg); padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; border: 1px solid var(--vp-c-divider); box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
     <h3 style="margin-top: 0; margin-bottom: 20px; color: var(--vp-c-text-1);">Оформлення замовлення</h3>

@@ -12,7 +12,7 @@ title: Магазин
     <div class="shop-card" style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 40px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease;">
       <img src="/claim.png" alt="Чанки" style="width: 100px; height: 100px; margin: 0 auto 20px; display: block; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" />
       <h2 style="font-size: 24px; margin-bottom: 10px; color: var(--vp-c-text-1);">Додаткові чанки (Приват)</h2>
-      <div style="font-size: 28px; font-weight: bold; color: var(--vp-c-brand); margin-bottom: 25px;">3 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ шт</span></div>
+      <div style="font-size: 28px; font-weight: bold; color: var(--vp-c-brand); margin-bottom: 25px;">5 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ шт</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
         <li>✅ Збільшення ліміту привату</li>
         <li>✅ Можливість будувати більші бази</li>
@@ -39,10 +39,7 @@ title: Магазин
       <span>Я погоджуюсь з умовами <a href="/" style="color: var(--vp-c-brand); text-decoration: underline;">Договору публічної оферти</a> та розумію, що цифрові товари поверненню не підлягають.</span>
     </label>
 
-    <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 8px 12px; margin-bottom: 20px; border-radius: 4px; font-size: 11px; color: var(--vp-c-text-2); line-height: 1.4;">
-      ⚠ <b>Не змінюйте суму та коментар на сторінці оплати!</b> Там вписано унікальний код замовлення — без нього система не зможе видати вам товар.
-    </div>  
-    <div style="display: flex; gap: 10px;">
+ <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
       <button @click="submitPayment" :disabled="isLoading" class="mono-pay-btn">
         <span v-if="isLoading">Обробка...</span>
