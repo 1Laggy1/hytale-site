@@ -121,7 +121,6 @@ onMounted(() => {
     <h2 class="fund-title">🚀 Фонд розвитку сервера</h2>
     <p class="fund-subtitle">Дякуємо, що обираєте наш сервер! Збір іде на розширення технічних можливостей та оплату хостингу.</p>
   </div>
-
   <div class="goal-container">
     <div class="goal-stats">
       <span class="goal-current">Зібрано: <strong>{{ current !== null ? current + ' грн' : (fundError ? '—' : '... грн') }}</strong></span>
@@ -138,7 +137,6 @@ onMounted(() => {
       Не вдалося завантажити дані збору. Спробуйте оновити сторінку пізніше.
     </div>
   </div>
-
   <div class="fund-actions">
     <a class="support-btn mono-btn" href="https://send.monobank.ua/jar/8RthFf5VhN" target="_blank" rel="noopener">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,8 +145,9 @@ onMounted(() => {
       Долучитися до збору
     </a>
   </div>
-
-  <p class="fund-note">💛 10% від цього збору йдуть на підтримку Збройних Сил України.</p>
+  <p class="fund-note">💛 15% від цього збору йдуть на підтримку Збройних Сил України.</p>
+  <p class="fund-note">Якщо ви хочете придбати унікальний ранг чи ігрові предмети, перейдіть до розділу <a href="/subscriptions">🔮 Статуси</a>. Цей збір призначений виключно для оплати хостингу.</p>
+</section>
 
 <style>
 .fund-section {
