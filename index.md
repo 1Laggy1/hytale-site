@@ -28,7 +28,7 @@ const DISCORD_GUILD_ID = '1461345250189508801'
 // Якщо в налаштуваннях Discord (Widget → Invite channel) вибрано канал, посилання підтягнеться саме.
 const DISCORD_INVITE = 'https://discord.gg/XZrn7xQC8Y'
 // Скріншоти: поклади файли в папку public/screens/ і впиши імена, напр. ['spawn.jpg', 'castle.jpg']
-const screenshots = []
+const screenshots = [ '1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png' ]
 
 const features = [
   { icon: '🏆', title: 'Унікальна система досягнень', details: 'Отримуй ексклюзивні ролі та статуси за свою активність!' },
