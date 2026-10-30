@@ -22,6 +22,21 @@ title: Магазин
     </div>
   </div>
 </div>
+<div style="max-width: 1152px; margin: 0 auto 40px auto; padding: 20px; border-top: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); font-family: sans-serif; text-align: center;">
+  <div style="background-color: var(--vp-c-bg-soft); padding: 24px; border-radius: 12px; text-align: left; font-size: 14px; line-height: 1.6;">
+    <h4 style="margin-top: 0; margin-bottom: 10px; color: var(--vp-c-text-1);">Реквізити та Контактна інформація</h4>
+    <p style="margin-top: 0;">
+      <strong>ФОП:</strong> Щиголь Андрій Андрійович<br>
+      <strong>ІПН:</strong> [ВКАЖІТЬ_СВІЙ_10_ЗНАЧНИЙ_ІПН_ТУТ]<br>
+      <strong>Телефон:</strong> +380986427839<br>
+      <strong>Email:</strong> andrew.shchigol@proton.me | <strong>Discord:</strong> <a href="https://discord.gg/JS75DCe9Dk" target="_blank">Служба підтримки</a>
+    </p>
+    <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--vp-c-text-1);">Договір публічної оферти</h4>
+    <p style="margin-top: 0;">Здійснюючи оплату на сайті hytaleua.com.ua, користувач купує доступ до цифрового контенту та додаткових віртуальних функцій ігрового сервера HytaleUA (надалі - Послуги). Всі цифрові товари та послуги надаються на умовах «як є» (as is). Послуга вважається повністю наданою в момент активації віртуальних предметів або статусів на обліковому записі користувача в грі. Користувач підтверджує, що йому виповнилося 18 років, або він здійснює покупку з дозволу батьків чи опікунів.</p>
+    <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--vp-c-text-1);">Політика повернення коштів (Refund Policy)</h4>
+    <p style="margin-top: 0; margin-bottom: 0;">Оскільки користувач отримує доступ до цифрового контенту автоматично одразу після успішної оплати, кошти за надані послуги поверненню не підлягають (No Refunds). У разі виникнення технічних збоїв при видачі цифрових товарів (наприклад, товар не нараховано протягом 24 годин), користувач має звернутися до технічної підтримки через наш Discord-сервер для ручного зарахування придбаного товару.</p>
+  </div>
+</div>
 <div v-if="isModalOpen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(5px);">
   <div style="background: var(--vp-c-bg); padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; border: 1px solid var(--vp-c-divider); box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
     <h3 style="margin-top: 0; margin-bottom: 5px; color: var(--vp-c-text-1);">Оформлення замовлення</h3>
