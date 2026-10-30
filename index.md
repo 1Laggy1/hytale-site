@@ -119,7 +119,7 @@ onMounted(() => {
 <section class="fund-section">
   <div class="fund-header">
     <h2 class="fund-title">🚀 Фонд розвитку сервера</h2>
-    <p class="fund-subtitle">Дякуємо, що обираєте наш сервер! Збір іде на розширення технічних можливостей та оплату хостингу.</p>
+    <p class="fund-subtitle">Дякуємо, що обираєте наш сервер! Збір іде на розширення технічних можливостей та оплату хостингу. Також 15% йдуть на підтримку Збройних Сил України 🇺</p>
   </div>
   <div class="goal-container">
     <div class="goal-stats">
@@ -145,8 +145,6 @@ onMounted(() => {
       Долучитися до збору
     </a>
   </div>
-  
-<p class="fund-note">💛 15% від цього збору йдуть на підтримку Збройних Сил України.</p>
 </section>
 
 <style>
