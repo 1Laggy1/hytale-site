@@ -3,37 +3,36 @@ layout: doc
 title: Підтримати проект
 ---
 
-# 💖 Підтримати HytaleUA
-
-Дякуємо, що граєте на нашому сервері!
-
 <br />
 
-### 🎯 Базове виживання та розвиток проекту
-
-<div class="goal-container">
-  <div class="goal-stats">
-    <span class="goal-current">Зібрано: <strong id="val-current">... грн</strong></span>
-    <span class="goal-target">Ціль: <strong id="val-target">1400 грн</strong></span>
+  <div class="fund-header">
+    <h2 class="fund-title">🚀 Фонд розвитку сервера</h2>
+    <p class="fund-subtitle">Дякуємо, що обираєте наш сервер! Збір іде на розширення технічних можливостей та оплату хостингу. Також 15% йдуть на підтримку Збройних Сил України 🇺🇦</p>
   </div>
-  <div class="progress-bg">
-    <div id="val-bar" class="progress-fill" style="width: 0%;"></div>
+  <div class="goal-container">
+    <div class="goal-stats">
+      <span class="goal-current">Зібрано: <strong>{{ current !== null ? current + ' грн' : (fundError ? '—' : '... грн') }}</strong></span>
+      <span class="goal-target">Ціль: <strong>{{ target !== null ? target + ' грн' : '... грн' }}</strong></span>
+    </div>
+    <div class="progress-bg">
+      <div class="progress-fill" :style="{ width: barWidth + '%' }"></div>
+      <span class="progress-label" v-if="current !== null">{{ percent }}%</span>
+    </div>
+    <div class="goal-footer" v-if="!fundError">
+      До кінця місяця залишилося зібрати: <span>{{ left !== null ? left + ' грн' : '... грн' }}</span>
+    </div>
+    <div class="goal-footer" v-else>
+      Не вдалося завантажити дані збору. Спробуйте оновити сторінку пізніше.
+    </div>
   </div>
-  <div class="goal-footer">
-    До кінця місяця залишилося зібрати: <span id="val-left">... грн</span>
+  <div class="fund-actions">
+    <a class="support-btn mono-btn" href="https://send.monobank.ua/jar/4YydajW9HL" target="_blank" rel="noopener">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      Долучитися до збору
+    </a>
   </div>
-</div>
-
-15% від накопиченої суми йде на підтримку Збройний Сил України
-
-<div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; margin-bottom: 40px;">
-  <a class="support-btn mono-btn" href="https://send.monobank.ua/jar/8RthFf5VhN" target="_blank">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" stroke-width="2"/>
-    </svg>
-    Банка Monobank
-  </a>
-</div>
 
 > **Примітка:** Якщо ви хочете отримати унікальний ранг чи переваги, перейдіть до нашої сторінки [🔮 Статуси](/subscriptions). Ця сторінка призначена виключно для добровільних пожертв.
 
