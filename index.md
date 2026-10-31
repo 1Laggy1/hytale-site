@@ -212,7 +212,6 @@ onUnmounted(() => {
       <div class="hua-mini-left" v-else>Не вдалося завантажити дані збору</div>
       <a class="hua-btn hua-btn-gold" href="https://hytaleua.com.ua/support">💖 Підтримати проект</a>
     </div>
-
     <div class="hua-top">
       <h3 class="hua-top-title">🏅 Топ пожертв місяця</h3>
       <ol v-if="topDonations.length" class="hua-top-list">
