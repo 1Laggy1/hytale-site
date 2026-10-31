@@ -222,19 +222,6 @@ onUnmounted(() => {
     <button class="hua-btn hua-btn-gold" type="button" @click="copyIp">{{ copied ? '✅ Скопійовано!' : '📋 play.hytaleua.com.ua' }}</button>
     <a class="hua-link" href="/wiki/getting-started">Як приєднатися →</a>
   </div>
-    <div class="hua-top">
-      <h3 class="hua-top-title">🏅 Топ пожертв</h3>
-      <ol v-if="topDonations.length" class="hua-top-list">
-        <li v-for="(d, i) in topDonations" :key="i" class="hua-top-item">
-          <span class="hua-top-rank">{{ medals[i] || (i + 1) }}</span>
-          <div class="hua-top-body">
-            <strong class="hua-top-amount">{{ d.amount }} грн</strong>
-            <span v-if="d.comment" class="hua-top-comment">{{ d.comment }}</span>
-          </div>
-        </li>
-      </ol>
-      <p v-else class="hua-top-empty">{{ !topLoaded ? 'Завантаження...' : (topError ? 'Не вдалося завантажити' : 'Поки що порожньо. Будь першим!') }}</p>
-    </div>
   <div class="hua-card hua-discord">
     <iframe :src="discordSrc" title="Discord HytaleUA" width="100%" height="480" allowtransparency="true" frameborder="0" loading="lazy" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
     <a v-if="discordLink" class="hua-discord-join" :href="discordLink" target="_blank" rel="noopener">💬 Приєднатися до Discord</a>
@@ -304,7 +291,20 @@ onUnmounted(() => {
       Долучитися до збору
     </a>
   </div>
-</section>
+
+<div class="hua-top">
+      <h3 class="hua-top-title">🏅 Топ пожертв</h3>
+      <ol v-if="topDonations.length" class="hua-top-list">
+        <li v-for="(d, i) in topDonations" :key="i" class="hua-top-item">
+          <span class="hua-top-rank">{{ medals[i] || (i + 1) }}</span>
+          <div class="hua-top-body">
+            <strong class="hua-top-amount">{{ d.amount }} грн</strong>
+            <span v-if="d.comment" class="hua-top-comment">{{ d.comment }}</span>
+          </div>
+        </li>
+      </ol>
+      <p v-else class="hua-top-empty">{{ !topLoaded ? 'Завантаження...' : (topError ? 'Не вдалося завантажити' : 'Поки що порожньо. Будь першим!') }}</p>
+</div></section>
 
 <style>
 /* ---------- Hero ---------- */
