@@ -88,6 +88,17 @@ title: Статуси
   </div>
 </div>
 
+<div style="max-width: 1152px; margin: 40px auto; padding: 20px; border-top: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); font-family: sans-serif; text-align: center;">
+  <div style="background-color: var(--vp-c-bg-soft); padding: 24px; border-radius: 12px; text-align: left; font-size: 14px; line-height: 1.6;">
+    <h4 style="margin-top: 0; margin-bottom: 10px; color: var(--vp-c-text-1);">Контактна інформація</h4>
+    <p style="margin-top: 0;"><strong>Email:</strong> andryushka05@gmail.com | <strong>Discord:</strong> <a href="https://discord.gg/JS75DCe9Dk" target="_blank">Приєднатися до сервера</a></p>
+    <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--vp-c-text-1);">Договір публічної оферти (Підтримка проекту)</h4>
+    <p style="margin-top: 0;">Здійснюючи платіж на сайті hytaleua.com.ua, користувач надає добровільну фінансову підтримку (донат) на розвиток ігрового проекту HytaleUA. Всі отримані кошти спрямовуються на оплату хостингу, технічне обслуговування та розробку контенту. Як подяку за підтримку, проект надає користувачу віртуальні внутрішньоігрові винагороди (статуси/предмети). Дані винагороди не є об'єктом продажу, а є цифровим заохоченням меценатів проекту.</p>
+    <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--vp-c-text-1);">Політика повернення коштів (Refund Policy)</h4>
+    <p style="margin-top: 0; margin-bottom: 0;">Оскільки фінансова підтримка проекту є добровільною, а винагороди надаються автоматично в цифровому вигляді одразу після надходження коштів, повернення внесків не передбачено. Проте, адміністрація залишає за собою право розглянути можливість повернення у виключних випадках (наприклад, технічний збій при видачі винагороди, що не був усунутий протягом 24 годин). У разі виникнення будь-яких питань, звертайтесь до підтримки через наш Discord-сервер.</p>
+  </div>
+</div>
+
 <style>
   .sub-card:not(.sub-card-ruby):hover { transform: translateY(-10px); border-color: var(--vp-c-brand) !important; }
   .sub-card.active:not(.sub-card-ruby):hover { transform: scale(1.08) translateY(-10px); }
