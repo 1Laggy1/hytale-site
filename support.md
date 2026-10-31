@@ -26,12 +26,6 @@ title: Підтримати проект
 
 15% від накопиченої суми йде на підтримку Збройний Сил України
 
-<div class="hua-top">
-  <h3 class="hua-top-title">🏅 Топ пожертв місяця</h3>
-  <ol id="top-list" class="hua-top-list"></ol>
-  <p id="top-empty" class="hua-top-empty">Завантаження...</p>
-</div>
-
 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; margin-bottom: 40px;">
   <a class="support-btn mono-btn" href="https://send.monobank.ua/jar/8RthFf5VhN" target="_blank">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,6 +36,12 @@ title: Підтримати проект
 </div>
 
 > **Примітка:** Якщо ви хочете отримати унікальний ранг чи переваги, перейдіть до нашої сторінки [🔮 Статуси](/subscriptions). Ця сторінка призначена виключно для добровільних пожертв.
+
+<div class="hua-top">
+  <h3 class="hua-top-title">🏅 Топ пожертв місяця</h3>
+  <ol id="top-list" class="hua-top-list"></ol>
+  <p id="top-empty" class="hua-top-empty">Завантаження...</p>
+</div>
 
 <script>
 // Скрипт автоматично підтягує дані з бота
