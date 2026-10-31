@@ -138,9 +138,34 @@ function loadFund() {
     })
 }
 
+// ====== ТОП ПОЖЕРТВ ======
+const topDonations = ref([])
+const topLoaded = ref(false)
+const topError = ref(false)
+const medals = ['🥇', '🥈', '🥉']
+
+function loadTop() {
+  fetch('https://shop.hytaleua.com.ua:3000/api/top-donations')
+    .then(r => r.json())
+    .then(data => {
+      const list = Array.isArray(data) ? data : (data.donations || [])
+      topDonations.value = list
+        .map(d => ({ amount: Number(d.amount) || 0, comment: (d.comment || '').trim() }))
+        .sort((a, b) => b.amount - a.amount)
+        .slice(0, 5)
+    })
+    .catch(err => {
+      topError.value = true
+      console.error('Не вдалося завантажити топ пожертв:', err)
+    })
+    .finally(() => { topLoaded.value = true })
+}
+
 let observer = null
 
 onMounted(() => {
+  loadFund()
+  loadTop()
   // Кнопка копіювання IP у hero
   const ipButton = document.querySelector('a[href="#copy-ip"]')
   if (ipButton) {
@@ -197,11 +222,26 @@ onUnmounted(() => {
     <button class="hua-btn hua-btn-gold" type="button" @click="copyIp">{{ copied ? '✅ Скопійовано!' : '📋 play.hytaleua.com.ua' }}</button>
     <a class="hua-link" href="/wiki/getting-started">Як приєднатися →</a>
   </div>
+    <div class="hua-top">
+      <h3 class="hua-top-title">🏅 Топ пожертв</h3>
+      <ol v-if="topDonations.length" class="hua-top-list">
+        <li v-for="(d, i) in topDonations" :key="i" class="hua-top-item">
+          <span class="hua-top-rank">{{ medals[i] || (i + 1) }}</span>
+          <div class="hua-top-body">
+            <strong class="hua-top-amount">{{ d.amount }} грн</strong>
+            <span v-if="d.comment" class="hua-top-comment">{{ d.comment }}</span>
+          </div>
+        </li>
+      </ol>
+      <p v-else class="hua-top-empty">{{ !topLoaded ? 'Завантаження...' : (topError ? 'Не вдалося завантажити' : 'Поки що порожньо. Будь першим!') }}</p>
+    </div>
   <div class="hua-card hua-discord">
     <iframe :src="discordSrc" title="Discord HytaleUA" width="100%" height="480" allowtransparency="true" frameborder="0" loading="lazy" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
     <a v-if="discordLink" class="hua-discord-join" :href="discordLink" target="_blank" rel="noopener">💬 Приєднатися до Discord</a>
   </div>
 </section>
+
+
 
 <section class="hua-section" v-if="screenshots.length">
   <h2 class="hua-title">Наш <span>світ</span></h2>
@@ -308,6 +348,17 @@ onUnmounted(() => {
 .hua-btn-gold:hover { background: #ffd700; color: #1a1a1a; }
 .hua-link { font-size: 14px; font-weight: 600; color: var(--vp-c-brand-1); text-decoration: none; text-align: center; }
 .hua-link:hover { text-decoration: underline; }
+
+/* ---------- Топ пожертв ---------- */
+.hua-top { border-top: 1px solid var(--vp-c-divider); padding-top: 14px; }
+.hua-top-title { margin: 0 0 10px; padding: 0; font-size: 15px; font-weight: 700; text-align: center; }
+.hua-top-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.hua-top-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 12px; background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); }
+.hua-top-rank { flex: 0 0 24px; text-align: center; font-size: 18px; line-height: 1.4; font-weight: 700; color: var(--vp-c-text-2); }
+.hua-top-body { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.hua-top-amount { color: #ffd700; font-size: 15px; }
+.hua-top-comment { font-size: 13px; line-height: 1.45; color: var(--vp-c-text-2); overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.hua-top-empty { margin: 0; text-align: center; font-size: 13px; color: var(--vp-c-text-2); }
 
 .hua-discord { overflow: hidden; padding: 0; }
 .hua-discord iframe { display: block; width: 100%; height: 480px; border: 0; }
