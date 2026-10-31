@@ -264,37 +264,6 @@ onUnmounted(() => {
   </div>
 </section>
 
-<section class="fund-section">
-  <div class="fund-header">
-    <h2 class="fund-title">🚀 Фонд розвитку сервера</h2>
-    <p class="fund-subtitle">Дякуємо, що обираєте наш сервер! Збір іде на розширення технічних можливостей та оплату хостингу. Також 15% йдуть на підтримку Збройних Сил України 🇺🇦</p>
-  </div>
-  <div class="goal-container">
-    <div class="goal-stats">
-      <span class="goal-current">Зібрано: <strong>{{ current !== null ? current + ' грн' : (fundError ? '—' : '... грн') }}</strong></span>
-      <span class="goal-target">Ціль: <strong>{{ target !== null ? target + ' грн' : '... грн' }}</strong></span>
-    </div>
-    <div class="progress-bg">
-      <div class="progress-fill" :style="{ width: barWidth + '%' }"></div>
-      <span class="progress-label" v-if="current !== null">{{ percent }}%</span>
-    </div>
-    <div class="goal-footer" v-if="!fundError">
-      До кінця місяця залишилося зібрати: <span>{{ left !== null ? left + ' грн' : '... грн' }}</span>
-    </div>
-    <div class="goal-footer" v-else>
-      Не вдалося завантажити дані збору. Спробуйте оновити сторінку пізніше.
-    </div>
-  </div>
-  <div class="fund-actions">
-    <a class="support-btn mono-btn" href="https://send.monobank.ua/jar/4YydajW9HL" target="_blank" rel="noopener">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" stroke-width="2"/>
-      </svg>
-      Долучитися до збору
-    </a>
-  </div>
-</section>
-
 <style>
 /* ---------- Hero ---------- */
 :root {

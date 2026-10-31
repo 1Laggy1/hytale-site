@@ -38,81 +38,81 @@ title: Підтримати проект
 
 <div class="hua-top">
   <h3 class="hua-top-title">🏅 Топ пожертв місяця</h3>
-  <ol id="top-list" class="hua-top-list"></ol>
-  <p id="top-empty" class="hua-top-empty">Завантаження...</p>
+  <ol v-if="topDonations.length" class="hua-top-list">
+    <li v-for="(d, i) in topDonations" :key="i" class="hua-top-item">
+      <span class="hua-top-rank">{{ medals[i] || (i + 1) }}</span>
+      <div class="hua-top-body">
+        <strong class="hua-top-amount">{{ d.amount }} грн</strong>
+        <span v-if="d.comment" class="hua-top-comment">{{ d.comment }}</span>
+      </div>
+    </li>
+  </ol>
+  <p v-else class="hua-top-empty">{{ !topLoaded ? 'Завантаження...' : (topError ? 'Не вдалося завантажити' : 'Поки що порожньо. Будь першим!') }}</p>
 </div>
 
-<script>
-// Скрипт автоматично підтягує дані з бота
-if (typeof window !== 'undefined') {
+<script setup>
+import { ref, onMounted } from 'vue'
+
+// ====== ФОНД РОЗВИТКУ ======
+const current = ref(null)
+const target = ref(null)
+const left = ref(null)
+const percent = ref(0)
+const barWidth = ref(0)
+const fundError = ref(false)
+
+function loadFund() {
   fetch('https://shop.hytaleua.com.ua:3000/api/funding')
     .then(response => response.json())
     .then(data => {
-      const current = data.currentUAH;
-      const target = data.targetUAH;
-      
-      // ВИПРАВЛЕНО: Додано parseFloat та .toFixed(2) для правильного округлення копійок
-      let left = target - current > 0 ? target - current : 0;
-      left = parseFloat(left.toFixed(2));
-      
-      let percent = Math.round((current / target) * 100);
-      if (percent > 100) percent = 100;
+      const cur = data.currentUAH
+      const tgt = data.targetUAH
 
-      // Оновлюємо текст (можна також округлити current, про всяк випадок)
-      document.getElementById('val-current').innerText = parseFloat(current.toFixed(2)) + ' грн';
-      document.getElementById('val-target').innerText = target + ' грн';
-      document.getElementById('val-left').innerText = left + ' грн';
+      current.value = parseFloat(cur.toFixed(2))
+      target.value = tgt
+      left.value = parseFloat(Math.max(tgt - cur, 0).toFixed(2))
+
+      let p = Math.round((cur / tgt) * 100)
+      if (p > 100) p = 100
+      percent.value = p
+
       // Плавна анімація заповнення шкали
-      setTimeout(() => {
-        document.getElementById('val-bar').style.width = percent + '%';
-      }, 400);
-    })
-    .catch(err => console.error('Не вдалося завантажити дані шкали:', err));
-    // ====== ТОП ПОЖЕРТВ ======
-  fetch('https://shop.hytaleua.com.ua:3000/api/top-donations?limit=10')
-    .then(response => response.json())
-    .then(list => {
-      const listEl = document.getElementById('top-list');
-      const emptyEl = document.getElementById('top-empty');
-      if (!Array.isArray(list) || list.length === 0) {
-        emptyEl.innerText = 'Поки що порожньо. Будь першим!';
-        return;
-      }
-      emptyEl.style.display = 'none';
-      const medals = ['🥇', '🥈', '🥉'];
-      list.forEach((d, i) => {
-        const li = document.createElement('li');
-        li.className = 'hua-top-item';
-
-        const rank = document.createElement('span');
-        rank.className = 'hua-top-rank';
-        rank.textContent = medals[i] || String(i + 1);
-
-        const body = document.createElement('div');
-        body.className = 'hua-top-body';
-
-        const amount = document.createElement('strong');
-        amount.className = 'hua-top-amount';
-        amount.textContent = parseFloat(Number(d.amount).toFixed(2)) + ' грн';
-        body.appendChild(amount);
-
-        if (d.comment) {
-          const comment = document.createElement('span');
-          comment.className = 'hua-top-comment';
-          comment.textContent = d.comment; // textContent, а не innerHTML: коментарі не можуть вставити HTML
-          body.appendChild(comment);
-        }
-
-        li.appendChild(rank);
-        li.appendChild(body);
-        listEl.appendChild(li);
-      });
+      setTimeout(() => { barWidth.value = p }, 400)
     })
     .catch(err => {
-      document.getElementById('top-empty').innerText = 'Не вдалося завантажити';
-      console.error('Не вдалося завантажити топ пожертв:', err);
-    });
+      fundError.value = true
+      console.error('Не вдалося завантажити дані шкали:', err)
+    })
 }
+
+// ====== ТОП ПОЖЕРТВ ======
+const TOP_LIMIT = 10 // скільки записів показуємо (максимум на боці бота — 20)
+const topDonations = ref([])
+const topLoaded = ref(false)
+const topError = ref(false)
+const medals = ['🥇', '🥈', '🥉']
+
+function loadTop() {
+  fetch(`https://shop.hytaleua.com.ua:3000/api/top-donations?limit=${TOP_LIMIT}`)
+    .then(r => r.json())
+    .then(data => {
+      const list = Array.isArray(data) ? data : (data.donations || [])
+      topDonations.value = list
+        .map(d => ({ amount: parseFloat((Number(d.amount) || 0).toFixed(2)), comment: (d.comment || '').trim() }))
+        .sort((a, b) => b.amount - a.amount)
+        .slice(0, TOP_LIMIT)
+    })
+    .catch(err => {
+      topError.value = true
+      console.error('Не вдалося завантажити топ пожертв:', err)
+    })
+    .finally(() => { topLoaded.value = true })
+}
+
+onMounted(() => {
+  loadFund()
+  loadTop()
+})
 </script>
 
 <style>
