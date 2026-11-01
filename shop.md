@@ -18,7 +18,7 @@ title: Нагороди
         <li>✅ Можливість будувати більші бази</li>
         <li>✅ Назавжди залишається на акаунті</li>
       </ul>
-      <button @click="openModal('chunks', 'Додаткові чанки', 3)" class="shop-button" style="width: 100%; border: none; cursor: pointer; display: block; background: var(--vp-c-brand); color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати</button>
+      <button @click="openModal('chunks', 'Додаткові чанки', 5)" class="shop-button" style="width: 100%; border: none; cursor: pointer; display: block; background: var(--vp-c-brand); color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати</button>
     </div>
   </div>
 </div>
@@ -34,7 +34,7 @@ title: Нагороди
       <div style="font-size: 18px; font-weight: bold; color: var(--vp-c-text-1);">Сума підтримки: <span style="color: var(--vp-c-brand);">{{ quantity * selectedItemPrice }} грн</span></div>
     </div>
     <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 8px 12px; margin-bottom: 20px; border-radius: 4px; font-size: 11px; color: var(--vp-c-text-2); line-height: 1.4;">
-      ⚠️ <b>Не змінюйте суму та коментар на сторінці Банки!</b> Там вписано унікальний код — без нього бот не зможе видати вам бонус.
+      ⚠️ <b>Не змінюйте суму на сторінці Банки!</b> Інакше бот не зможе видати вам бонус.
     </div> 
     <div style="display: flex; gap: 10px;">
       <button @click="closeModal" style="flex: 1; padding: 12px; border-radius: 8px; background: #6c757d; color: white; font-weight: bold; border: none; cursor: pointer;">Скасувати</button>
