@@ -14,9 +14,10 @@ title: Статуси
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">QUARTZ</h2>
       <div style="font-size: 32px; font-weight: bold; color: #6c757d; margin-bottom: 25px;">50 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ міс</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
+        <li>✅ +15 чанків привату</li>
         <li>✅ Зміна кольору нікнейму <b>/namecolor</b></li>
-        <li>✅ +2 точки <b>/home</b></li>
-        <li>✅ Збільшений ліміт ігрових порталів до 16</li>
+        <li>✅ 3 точки <b>/home</b></li>
+        <li>✅ Збільшений ліміт ігрових порталів до 8</li>
         <li>✅ Пріоритетний вхід на сервер</li>
         <li>✅ Унікальна роль в Discord Quartz</li>
       </ul>
@@ -28,14 +29,15 @@ title: Статуси
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">AMETHYST</h2>
       <div style="font-size: 32px; font-weight: bold; color: #bd00ed; margin-bottom: 25px;">180 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ міс</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
+        <li>✅ +40 чанків привату</li>
         <li>✅ Все, що є в <b>Quartz</b></li>
         <li>✅ Зміна префіксу <b>/prefix /prefixcolor</b></li>
-        <li>✅ +5 точок <b>/home</b></li>
+        <li>✅ 5 точок <b>/home</b></li>
         <li>✅ Можливість повернутись до <b>/back</b></li>
         <li>✅ Зміна назви і кольору приватів</li>
         <li>✅ Можливість створювати <b>/setwarp</b></li>
         <li>✅ Зміна нікнейму</li>
-        <li>✅ Збільшений ліміт ігрових порталів до 24</li>
+        <li>✅ Збільшений ліміт ігрових порталів до 16</li>
         <li>✅ Прибрані кулдауни на телепортації</li>
         <li>✅ Унікальна роль в Discord Amethyst</li>
       </ul>
@@ -46,6 +48,7 @@ title: Статуси
       <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--vp-c-text-1);">RUBY</h2>
       <div style="font-size: 32px; font-weight: bold; color: #a50727; margin-bottom: 25px;">390 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ міс</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
+        <li>✅ +80 чанків привату</li>
         <li>✅ Все, що є в <b>Amethyst</b></li>
         <li>✅ Зміна суфіксу</li>
         <li>✅ Веселковий нікнейм і ефекти</li>
@@ -53,7 +56,7 @@ title: Статуси
         <li>✅ Нескінченна кількість домівок <b>/home</b></li>
         <li>✅ Унікальна роль в Discord Ruby</li>
         <li>✅ Зміна кольору в Discord</li>
-        <li>✅ Нескінченний ліміт на ігрові портали</li>
+        <li>✅ Збільшений ліміт ігрових порталів до 24</li>
         <li>✅ Чат RUBY (Direct адмін-чат)</li>
       </ul>
       <button @click="openModal('ruby')" class="sub-button" style="width: 100%; border: none; cursor: pointer; display: block; background: #a50727; color: white; padding: 15px; border-radius: 12px; font-weight: bold;">Отримати статус</button>
