@@ -12,7 +12,7 @@ title: Нагороди
     <div class="shop-card" style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); border-radius: 24px; padding: 40px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease;">
       <img src="/claim.png" alt="Чанки" style="width: 100px; height: 100px; margin: 0 auto 20px; display: block; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" />
       <h2 style="font-size: 24px; margin-bottom: 10px; color: var(--vp-c-text-1);">Додаткові чанки (Приват)</h2>
-      <div style="font-size: 28px; font-weight: bold; color: var(--vp-c-brand); margin-bottom: 25px;">3 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ шт</span></div>
+      <div style="font-size: 28px; font-weight: bold; color: var(--vp-c-brand); margin-bottom: 25px;">5 грн <span style="font-size: 16px; font-weight: normal; color: var(--vp-c-text-2);">/ шт</span></div>
       <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px; color: var(--vp-c-text-2); font-size: 15px; line-height: 2;">
         <li>✅ Збільшення ліміту привату</li>
         <li>✅ Можливість будувати більші бази</li>
